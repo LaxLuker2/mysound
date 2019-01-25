@@ -1,17 +1,25 @@
 {
   "name": "mysound",
   "version": "0.1.0",
+  "description": "mysound web-page for NMTP 2019",
+  "author": "Luke Schwarting, Alexia Munzo, Dito Wirastomo, Brendan Lee",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-service": "^3.3.0",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
     "vue-template-compiler": "^2.5.21"
   },
   "postcss": {
