@@ -8,6 +8,7 @@
 </template>
 
 <script>
+'use strict'
 var mediaRecorder;
 var chunks = [];
 export default {
@@ -21,7 +22,7 @@ export default {
       .then(stream => {
         if($('.rec').hasClass('Record')){
           mediaRecorder = new MediaRecorder(stream)
-          mediaRecorder.start();
+          mediaRecorder.start(250);
           console.log(mediaRecorder.state);
           console.log("recorder started");
           $('.rec').css("background-color","red");
@@ -30,9 +31,9 @@ export default {
           $('.rec').removeClass('Record');
 
           mediaRecorder.ondataavailable = function(e) {
-            //log('Data available...');
+            //console.log('Data available...');
             //console.log(e.data);
-            //console.log(e);
+            console.dir(e);
           
             chunks.push(e.data);
           };
@@ -47,10 +48,12 @@ export default {
           $('.rec').addClass('Record');
 
           var blob = new Blob(chunks, {type: "audio/mp3"});
+          //var blob = new Blob(chunks, {type: "video/webm"});
           chunks = [];
     
           var audioURL = window.URL.createObjectURL(blob);
-    
+          console.dir(blob);
+          
           $('.downloadLink').attr("href", audioURL);
           //videoElement.src = audioURL;
           //downloadLink.innerHTML = 'Download audio file';
