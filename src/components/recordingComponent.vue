@@ -33,7 +33,7 @@ export default {
           mediaRecorder.ondataavailable = function(e) {
             //console.log('Data available...');
             //console.log(e.data);
-            console.dir(e);
+            //console.dir(e);
           
             chunks.push(e.data);
           };
@@ -47,19 +47,22 @@ export default {
           $('.rec').removeClass('Recording');
           $('.rec').addClass('Record');
 
-          var blob = new Blob(chunks, {type: "audio/mp3"});
+          var blob = new Blob(chunks, {type: "audio/mpeg"});
           //var blob = new Blob(chunks, {type: "video/webm"});
           chunks = [];
     
           var audioURL = window.URL.createObjectURL(blob);
-          console.dir(blob);
+          //console.dir(blob);
           
           $('.downloadLink').attr("href", audioURL);
+          //$('.playback').attr("src", audioURL);
           //videoElement.src = audioURL;
           //downloadLink.innerHTML = 'Download audio file';
     
           var rand = Math.floor((Math.random() * 10000000));
           var name = "mysound_"+rand+".mp3" ;
+
+          $('.playback').attr("src", audioURL);
     
           $('.downloadLink').attr( "download", name);
           $('.downloadLink').attr( "name", name);
