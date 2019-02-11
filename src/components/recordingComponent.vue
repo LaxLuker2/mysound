@@ -4,8 +4,6 @@
     <p>Ask users to use mic, record voice, save voice.</p>
     <button type="button" class="btn btn-primary rec Record" @click="record()">Record</button>
     <a type="button" class="btn btn-warning downloadLink">Download</a>
-    <br>
-    <section class="sound-clips"></section>
   </div>
 </template>
 
@@ -14,7 +12,7 @@
 var mediaRecorder;
 var chunks = [];
 var blob;
-var soundClips = document.querySelector(".sound-clips");
+
 export default {
   name: "Recording",
   props: {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <recordComp msg="Welcome to Your Vue.js App"/>
+    <recordComp msg="Lets create a record button and save"/>
   </div>
 </template>
 
