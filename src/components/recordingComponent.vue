@@ -4,6 +4,13 @@
     <p>Ask users to use mic, record voice, save voice.</p>
     <button type="button" class="btn btn-primary rec Record" @click="record()">Record</button>
     <a type="button" class="btn btn-warning downloadLink">Download</a>
+    <!-- <a type="button" class="btn btn-info uploadLink" @click="upload()">Upload</a> -->
+    <div id="message"></div>
+    <form id="uploadFile" method="post" enctype="multipart/form-data">
+      <hr id="line">
+      <!-- <input type="file" name="file" > -->
+      <input type="submit" value="Upload" id="file" class="submit">
+    </form>
   </div>
 </template>
 
@@ -17,6 +24,27 @@ export default {
   name: "Recording",
   props: {
     msg: String
+  },
+  mounted: function() {
+    $("#uploadfile").on("submit", function(e) {
+      e.preventDefault();
+      $("#message").empty();
+      //$("#loading").show();
+      $.ajax({
+        url: "ajax_php_file.php", // Url to which the request is send
+        type: "POST", // Type of request to be send, called as method
+        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false, // The content type used when sending data to the server.
+        cache: false, // To unable request pages to be cached
+        processData: false, // To send DOMDocument or non processed data file it is set to false
+        success: function(
+          data // A function to be called if request succeeds
+        ) {
+          //$("#loading").hide();
+          $("#message").html(data);
+        }
+      });
+    });
   },
   methods: {
     record() {
@@ -104,6 +132,12 @@ export default {
           //   var evtTgt = e.target;
           //   evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
           // };
+
+          //btn - upload;
+          $("#file").attr("href", audioURL);
+          $("#file").attr("src", audioURL);
+          $("#file").attr("download", name);
+          $("#file").attr("name", name);
         };
       });
     }
