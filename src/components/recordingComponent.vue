@@ -20,7 +20,6 @@ var mediaRecorder;
 var chunks = [];
 var blob;
 
-var uploadFiles = [];
 var uploadURL;
 var nameFile;
 
@@ -54,19 +53,23 @@ export default {
   methods: {
     handleSubmit(e) {
       console.log("submit button clicked");
-      var form = $("form")[0];
-      console.log("form");
-      console.log(form);
-      var formData = new FormData(form);
-      console.log("formData");
-      console.log(formData);
+      // var form = $("form")[0];
+      // console.log("form");
+      // console.log(form);
+      // var formData = new FormData(form);
+      // console.log("formData");
+      // console.log(formData);
+      var fd = new FormData();
+      fd.append("data", blob);
+      // console.log("fd");
+      // console.log(fd);
       e.preventDefault();
       $("#message").empty();
       // $('#loading').show();
       $.ajax({
         url: "ajax_php_file.php", // Url to which the request is send
         type: "POST", // Type of request to be send, called as method
-        data: form, //tried with formData still broke // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        data: fd, //tried with formData still broke // Data sent to server, a set of key/value pairs (i.e. form fields and values)
         contentType: false, // The content type used when sending data to the server.
         cache: false, // To unable request pages to be cached
         processData: false, // To send DOMDocument or non processed data file it is set to false
@@ -146,7 +149,7 @@ export default {
           // clipContainer.appendChild(deleteButton);
           // soundClips.appendChild(clipContainer);
 
-          var blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+          blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
           chunks = [];
           var audioURL = window.URL.createObjectURL(blob);
           //audio.src = audioURL;
@@ -163,18 +166,15 @@ export default {
           //   evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
           // };
 
-          uploadFiles = [];
-          uploadFiles.push(audioURL);
-          uploadFiles.push(name);
           uploadURL = audioURL;
           nameFile = name;
 
           //btn - upload;
-          $("#file").attr("href", audioURL);
-          $("#file").attr("src", audioURL);
-          $("#file").attr("download", name);
-          $("#file").attr("name", name);
-          $("#file").attr("type", "mp3");
+          // $("#file").attr("href", audioURL);
+          // $("#file").attr("src", audioURL);
+          // $("#file").attr("download", name);
+          // $("#file").attr("name", name);
+          // $("#file").attr("type", "mp3");
         };
       });
     }
