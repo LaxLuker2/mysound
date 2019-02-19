@@ -6,10 +6,10 @@
     <a type="button" class="btn btn-warning downloadLink">Download</a>
     <!-- <a type="button" class="btn btn-info uploadLink" @click="upload()">Upload</a> -->
     <div id="message"></div>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
       <hr id="line">
-      <!-- <input type="file" name="file" id="file"> -->
-      <input type="submit" value="Upload" id="file" class="submit">
+      <input type="file" name="file" id="file">
+      <input type="submit" value="Upload" class="submit">
     </form>
   </div>
 </template>
@@ -19,6 +19,10 @@
 var mediaRecorder;
 var chunks = [];
 var blob;
+
+var uploadFiles = [];
+var uploadURL;
+var nameFile;
 
 export default {
   name: "Recording",
@@ -50,19 +54,23 @@ export default {
   methods: {
     handleSubmit(e) {
       console.log("submit button clicked");
+      var form = $("form")[0];
+      console.log("form");
+      console.log(form);
+      var formData = new FormData(form);
+      console.log("formData");
+      console.log(formData);
       e.preventDefault();
       $("#message").empty();
       // $('#loading').show();
       $.ajax({
         url: "ajax_php_file.php", // Url to which the request is send
         type: "POST", // Type of request to be send, called as method
-        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        data: form, //tried with formData still broke // Data sent to server, a set of key/value pairs (i.e. form fields and values)
         contentType: false, // The content type used when sending data to the server.
         cache: false, // To unable request pages to be cached
         processData: false, // To send DOMDocument or non processed data file it is set to false
-        success: function(
-          data // A function to be called if request succeeds
-        ) {
+        success: function(data) {
           console.log("submitted successfully");
           console.log(data);
           $("#message").html(data);
@@ -155,11 +163,18 @@ export default {
           //   evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
           // };
 
+          uploadFiles = [];
+          uploadFiles.push(audioURL);
+          uploadFiles.push(name);
+          uploadURL = audioURL;
+          nameFile = name;
+
           //btn - upload;
           $("#file").attr("href", audioURL);
           $("#file").attr("src", audioURL);
           $("#file").attr("download", name);
           $("#file").attr("name", name);
+          $("#file").attr("type", "mp3");
         };
       });
     }
