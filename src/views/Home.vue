@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <recordComp msg="Lets create a record button and save"/>
-  </div>
+    <div class="home">
+        <div class="header"></div>
+        <div id="record">
+            <div id="outer"></div>
+            <div id="middle"></div>
+            <div id="center"></div>
+        </div>
+        <div class="logo"></div>
+        <Main/>
+
+    </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import recordComp from "@/components/recordingComponent.vue";
+    'use strict'
+    // @ is an alias to /src
+    import Recording from '@/components/recordingComponent.vue'
+    import Main from '@/components/main.vue'
+    
+    export default {
+        name: 'home',
+        components: {
+            Main
+        },
+        methods: {
+        
+           
+        }
+        
+      
+    }
+    
 
-export default {
-  name: "home",
-  components: {
-    recordComp
-  }
-};
+    
+
 </script>

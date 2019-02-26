@@ -1,11 +1,42 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>Ask users to use mic, record voice, save voice.</p>
-    <button type="button" class="btn btn-primary rec Record" @click="record()">Record</button>
-    <a type="button" class="btn btn-warning downloadLink">Download</a>
+    <div id="record">
+            <div id="outer" class="recPlay"></div>
+            <div id="middle" class="recPlay"></div>
+            <div id="center" class="recPlay"></div>
+        </div>
+        <div class="pin"></div>
+      <div id="footer">
+      <div id="recording">
+          <img src="../assets/pause.svg" id="pause"  @click='callRecord'>
+          <img src="../assets/rec.svg" id="rec" class="rec Record" @click='callUpload'>
+          <img src="../assets/reset.svg" id="reset" @click='callRecord'>   
+      </div>
+      <img src="../assets/recText.svg" id="recText" @click=''> 
+    </div>
   </div>
 </template>
+<!--<template>
+  <div class="hello">
+     <div id="record">
+            <div id="outer" class="recPlay"></div>
+            <div id="middle" class="recPlay"></div>
+            <div id="center" class="recPlay"></div>
+        </div>
+        <div class="pin"></div>
+    <div id="recording">
+    <button type="button" id="rec" class="btn btn-primary rec Record" @click="record()">Record</button>
+    <a type="button" class="btn btn-warning downloadLink" @click="callUpload()">Done</a>
+    <!-- <a type="button" class="btn btn-info uploadLink" @click="upload()">Upload</a> -->
+   <!--<div id="message"></div>
+    <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
+      <hr id="line">
+      <input type="file" name="file" id="file">
+      <input type="submit" value="Upload" class="submit">
+    </form>
+        </div>
+  </div>
+</template>-->
 
 <script>
 "use strict";
@@ -13,17 +44,71 @@ var mediaRecorder;
 var chunks = [];
 var blob;
 
+var uploadURL;
+var nameFile;
+
 export default {
   name: "Recording",
   props: {
     msg: String
   },
+  // mounted: function() {
+  //   $("#uploadfile").on("submit", function(e) {
+  //     console.log("button submitted hit");
+  //     //e.preventDefault();
+  //     //$("#message").empty();
+  //     //$("#loading").show();
+  //     // $.ajax({
+  //     //   url: `${__dirname}/ajax_php_file.php`, // Url to which the request is send
+  //     //   type: "POST", // Type of request to be send, called as method
+  //     //   data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+  //     //   contentType: false, // The content type used when sending data to the server.
+  //     //   cache: false, // To unable request pages to be cached
+  //     //   processData: false, // To send DOMDocument or non processed data file it is set to false
+  //     //   success: function(
+  //     //     data // A function to be called if request succeeds
+  //     //   ) {
+  //     //     //$("#loading").hide();
+  //     //     $("#message").html(data);
+  //     //   }
+  //     // });
+  //   });
+  // },
   methods: {
+    handleSubmit(e) {
+      console.log("submit button clicked");
+      // var form = $("form")[0];
+      // console.log("form");
+      // console.log(form);
+      // var formData = new FormData(form);
+      // console.log("formData");
+      // console.log(formData);
+      var fd = new FormData();
+      fd.append("data", blob);
+      // console.log("fd");
+      // console.log(fd);
+      e.preventDefault();
+      $("#message").empty();
+      // $('#loading').show();
+      $.ajax({
+        url: "ajax_php_file.php", // Url to which the request is send
+        type: "POST", // Type of request to be send, called as method
+        data: fd, //tried with formData still broke // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false, // The content type used when sending data to the server.
+        cache: false, // To unable request pages to be cached
+        processData: false, // To send DOMDocument or non processed data file it is set to false
+        success: function(data) {
+          console.log("submitted successfully");
+          console.log(data);
+          $("#message").html(data);
+        }
+      });
+    },
     record() {
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
         if ($(".rec").hasClass("Record")) {
           mediaRecorder = new MediaRecorder(stream);
-          mediaRecorder.start(250);
+          mediaRecorder.start(3000);
           console.log(mediaRecorder.state);
           console.log("recorder started");
           $(".rec").css("background-color", "red");
@@ -88,7 +173,7 @@ export default {
           // clipContainer.appendChild(deleteButton);
           // soundClips.appendChild(clipContainer);
 
-          var blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+          blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
           chunks = [];
           var audioURL = window.URL.createObjectURL(blob);
           //audio.src = audioURL;
@@ -104,10 +189,28 @@ export default {
           //   var evtTgt = e.target;
           //   evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
           // };
+
+          uploadURL = audioURL;
+          nameFile = name;
+
+          //btn - upload;
+          // $("#file").attr("href", audioURL);
+          // $("#file").attr("src", audioURL);
+          // $("#file").attr("download", name);
+          // $("#file").attr("name", name);
+          // $("#file").attr("type", "mp3");
         };
       });
-    }
+    },
+      
+        callUpload() {
+                this.$router.push('upload');
+            },
+        callRecord() {
+                this.$router.push('recorder');
+            }
   }
+    
 };
 </script>
 
