@@ -1,11 +1,32 @@
 <template>
   <div class="hello">
+    
+    <div id="chimelogo"></div>
+      <div id="play">
+        <input type="button" id="playbutton" @click='play()'>
+        <div id="soundwaves"></div>
+        <div id="playsymbol">
+          
+          </div>  
+        
+      </div>
+    <div class="goodjob">
+        <h1>Good Job</h1>
+        <p>Let’s hear what you just recorded and upload it if you’re happy.</p>
+      </div>
     <h1>{{ msg }}</h1>
-    <p>Ask users to use mic, record voice, save voice.</p>
-    <button type="button" class="btn btn-primary rec Record" @click="record()">Record</button>
-    <a type="button" class="btn btn-warning downloadLink">Download</a>
-    <a type="button" class="btn btn-secondary playRecording" @click="play()">Play</a>
+  <div id="content">
+     <div id="recorder">
+                <input type="button" class="recButton" value="Upload" @click='callRecord()'>
+                 </div>
   </div>
+   
+    
+    
+
+    
+ </div>
+  
 </template>
 
 <script>
