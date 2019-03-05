@@ -1,0 +1,746 @@
+@media only screen and (max-width:500px) {
+
+    #app {
+        overflow: hidden;
+        font-family: "Helvetica";
+        font-size: 16px;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 48px;
+        color: #F2F2F2;
+    }
+
+    #nav {
+        visibility: hidden;
+    }
+
+    #record {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        overflow: hidden;
+
+    }
+
+    .recPlay {
+        animation: spin 3s infinite linear;
+    }
+
+    #record #outer {
+        margin: 0 auto;
+        width: 112vw;
+        height: 112vw;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #F733EE 0%, #0102EA 100%);
+        box-shadow: 0px 5px 15px rgba(10, 4, 234, 0.33);
+        position: absolute;
+        top: -40vw;
+        z-index: -1;
+
+    }
+
+    #record #middle {
+        width: 70vw;
+        height: 70vw;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #F136EE 0%, #FB5154 100%);
+        z-index: -1;
+        top: -12vw;
+        position: absolute;
+        mix-blend-mode: overlay;
+
+
+    }
+
+    #record #center {
+        width: 46vw;
+        height: 46vw;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #FADE3E 0%, #EC4277 100%);
+        position: absolute;
+        mix-blend-mode: hard-light;
+        z-index: -1;
+        top: -1vw;
+
+    }
+
+    .logo {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        background: url(logo.svg) no-repeat center center;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        height: 34vh;
+        width: 75vw;
+        left: 31vw;
+        top: 0vh;
+    }
+
+    .pin {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        background: url(recordPin.svg) no-repeat center center;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        height: 34vh;
+        width: 75vw;
+        left: 48vw;
+        top: -3vh;
+    }
+
+    .logo #pin {
+        position: absolute;
+        top: -.75vh;
+        left: 47.5vw;
+        height: 23vh;
+        width: 65vw;
+        background-image: url(recordPin.svg);
+        z-index: 2;
+    }
+
+
+
+    .logo h1 {
+        position: absolute;
+        top: 18vh;
+        width: 100vw;
+        z-index: 3;
+        font-family: "Helvetica";
+        font-weight: bold;
+        line-height: normal;
+        letter-spacing: -4px;
+        font-size: 48px;
+        color: #F2F2F2;
+        text-align: center;
+        align-content: center;
+    }
+
+    #content {
+        position: absolute;
+        top: 70vh;
+        width: 100vw;
+
+    }
+
+    #content #recorder {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #recorder .recButton {
+        position: relative;
+        min-width: 52vw;
+        font-family: "Helvetica";
+        font-weight: bold;
+        line-height: normal;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: -0.75px;
+        padding: 15px;
+        color: #FFFFFF;
+        background: linear-gradient(180deg, #F136EE 0%, #FB5154 100%);
+        border: none;
+        border-radius: 27.5px;
+        margin-bottom: 32px;
+    }
+
+    #recorder .recButton:focus {
+        outline: 0;
+        mix-blend-mode: hard-light;
+    }
+
+    #content #carousel {
+        min-width: 75vw;
+        margin: 0 12.5vw 25px 12.5vw;
+        display: block;
+    }
+
+    #carousel h3 {
+        font-style: normal;
+        font-family: "Work Sans";
+        font-weight: normal;
+        line-height: 25px;
+        font-size: 16px;
+        text-align: center;
+        color: #4F4F4F;
+    }
+
+    #recording {
+        width: 30vw;
+        margin: auto 35vw auto 35vw;
+        align-content: center;
+        justify-content: center;
+        display: block;
+
+    }
+
+    #arrow {
+        width: 16px;
+        height: 8px;
+        margin: auto auto;
+        align-content: center;
+        justify-content: center;
+        display: block;
+    }
+
+    #recording #rec {
+        width: 42px;
+        height: 42px;
+        margin: 4.1vw;
+    }
+
+    #recording #pause {
+        width: 14px;
+        height: 20px;
+
+
+    }
+
+    #recording #reset {
+        width: 23.12px;
+        height: 20px;
+
+    }
+
+    #footer {
+        bottom: 10vh;
+        position: absolute;
+    }
+
+    #footer #recText {
+        margin: auto auto;
+        align-content: center;
+        justify-content: center;
+        display: block;
+    }
+
+
+    #libray {
+        margin: 35px 10vw 20px 10vw;
+        width: 80vw;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #libray h2 {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 25px;
+        font-size: 18px;
+        text-align: center;
+        color: #000000;
+    }
+
+    #libray #audio {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+
+    }
+
+    #audio .player {
+        min-width: 37vw;
+        height: 135px;
+        max-width: 35vw;
+        margin: auto;
+        margin-bottom: 10px;
+        flex: 1;
+        align-content: flex-start;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+
+    #audio .player:active {
+        background-blend-mode: darken;
+    }
+
+    #audio .player {
+        justify-content: center;
+    }
+
+    .yellowPink {
+        background: linear-gradient(180deg, #FADE3E 0%, #EC4277 100%);
+    }
+
+    .pinkBlue {
+        background: linear-gradient(180deg, #F733EE 0%, #0102EA 100%);
+    }
+
+    .pinkOrange {
+        background: linear-gradient(180deg, #F136EE 0%, #FB5154 100%);
+    }
+
+    .limeGreen {
+        background: linear-gradient(180deg, #E3F02D 0%, #66FC77 100%);
+    }
+
+    #audio .player audio {
+        visibility: hidden;
+    }
+
+    #timer {
+        font-family: Helvetica;
+        line-height: normal;
+        font-size: 36px;
+        text-align: center;
+        letter-spacing: -0.75px;
+
+        color: #333333;
+    }
+
+    /*Upload*/
+    #chimelogo {
+        width: 59px;
+        height: 18px;
+        margin: auto auto;
+        align-content: center;
+        justify-content: center;
+        display: block;
+        background: url(chimelogo.svg);
+        outline: none;
+    }
+
+    #soundwaves {
+        position: absolute;
+        width: 205px;
+        height: 80px;
+        top: 170px;
+        margin: auto auto;
+        align-content: center;
+        justify-content: center;
+        display: block;
+        background: url(soundwaves.svg);
+        outline: none;
+        padding: 10px;
+    }
+
+    #play {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+    }
+
+    #playbutton {
+        position: relative;
+        justify-content: center;
+        text-align: center;
+        min-width: 35vw;
+        height: 135px;
+        max-width: 75vw;
+        width: 256px;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 10px;
+        flex: 1;
+        align-content: flex-start;
+        background: url(playbackButton.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+
+    #playsymbol {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 190px;
+        margin: auto auto;
+        align-content: center;
+        justify-content: center;
+        display: block;
+        background: url(playSymbol.svg);
+        outline: none;
+    }
+
+    .goodjob {
+        align-content: center;
+        justify-content: center;
+        margin-left: 14vw;
+
+    }
+
+    .goodjob h1 {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 22px;
+        font-size: 32px;
+        text-align: center;
+        color: #333333;
+        width: 72vw;
+        margin-top: 20px;
+
+
+    }
+
+    .goodjob p {
+        position: relative;
+        width: 72vw;
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 25px;
+        font-size: 16px;
+        text-align: center;
+
+        color: #4F4F4F;
+    }
+
+    .restartButton {
+        position: relative;
+        min-width: 52vw;
+        font-family: "Helvetica";
+        font-weight: bold;
+        line-height: normal;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: -0.75px;
+        padding: 15px;
+        color: #050505;
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        border-radius: 27.5px;
+        margin-bottom: 32px;
+        display: block;
+    }
+
+    #resButton {
+        position: relative;
+        min-width: 52vw;
+        font-family: "Helvetica";
+        font-weight: bold;
+        line-height: normal;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: -0.75px;
+        padding: 15px;
+        color: #FFFFFF;
+        background: #BDBDBD;
+        border-radius: 27.5px;
+        margin-bottom: 32px;
+        display: block;
+        outline: none;
+        border: none;
+    }
+
+    #confpeople {
+        width: 300px;
+        height: 200px;
+        margin: auto auto;
+        margin-top: 60px;
+        align-content: center;
+        justify-content: center;
+        display: block;
+        background: url(confhi5.svg);
+        outline: none;
+    }
+
+    .thankyou h1 {
+        font-family: "Arial";
+        font-weight: "bold";
+        text-align: center;
+        font-size: 32px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .thankyou p {
+        position: relative;
+        font-family: "Arial";
+        left: 60px;
+        width: 270px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .retryButton {
+        position: relative;
+        min-width: 52vw;
+        font-family: "Helvetica";
+        font-weight: bold;
+        line-height: normal;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: -0.75px;
+        padding: 15px;
+        color: #050505;
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        border-radius: 27.5px;
+        margin-bottom: 32px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+
+    /*Onboarding - Alexia*/
+    .header {
+        width: 100vw;
+        height: 25px;
+        top: 0px;
+        position: absolute;
+        padding: 8px;
+    }
+
+    .header .logoH {
+        align-self: center;
+        position: absolute;
+        left: 42vw;
+        z-index: 1;
+    }
+
+    .header #skip {
+        right: 20px;
+        position: absolute;
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 25px;
+        font-size: 16px;
+        text-align: right;
+        color: #828282;
+    }
+
+    .welcome {
+
+        position: absolute;
+        align-content: center;
+        justify-content: center;
+        margin: 33px 30px auto 30px;
+    }
+
+    .welcome h1 {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 30px;
+        font-size: 24px;
+        text-align: center;
+        letter-spacing: -0.25px;
+
+        color: #333333;
+    }
+
+    .welcome p {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 25px;
+        font-size: 16px;
+        text-align: center;
+
+        color: #4F4F4F;
+        padding-bottom: 15px;
+
+    }
+
+    .image {
+        margin-top: 50px;
+        width: 100vw;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .image img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #next {
+        position: absolute;
+        bottom: 55px;
+        width: 100vw;
+    }
+
+    #next .bubbles {
+        align-self: center;
+        position: absolute;
+        left: 42vw;
+    }
+
+    #next .nextArrow {
+        right: 20px;
+        position: absolute;
+    }
+
+    #next .begin {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 33px;
+    }
+
+    /*Menu*/
+    .popout {
+        z-index: 5;
+        position: fixed;
+        background: #030303;
+        box-shadow: 6px 0px 10px rgba(51, 51, 51, 0.3);
+        width: 60vw;
+        height: 100vh;
+        margin: none;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        opacity: 1;
+        display: none;
+    }
+
+    .menu {
+        z-index: 2;
+    }
+
+    .menu #overlay {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        overflow-x: hidden;
+        background: #030303;
+        opacity: 0.3;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 4;
+        display: none;
+
+    }
+
+    .hamburger {
+        position: fixed;
+        float: right;
+        top: 8px;
+        left: 15px;
+        z-index: 2;
+        height: 12px;
+        width: 15px;
+    }
+
+    .popout #logoC {
+        bottom: 30px;
+        left: 15px;
+        position: absolute;
+
+    }
+
+    .popout #exit {
+        top: 15px;
+        left: 15px;
+        position: absolute;
+
+    }
+
+    .popout ul {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 25px;
+        font-size: 24px;
+
+        color: #F2F2F2;
+        top: 12vh;
+        position: absolute;
+
+    }
+
+    .popout a {
+        color: #F2F2F2;
+        text-decoration: none;
+    }
+
+    .popout a:hover {
+        color: #F2F2F2;
+        text-decoration: none;
+    }
+
+    .popout a:visited {
+        color: #F2F2F2;
+        text-decoration: none;
+    }
+
+    .popout li {
+        list-style-type: none;
+        padding-bottom: 30px;
+    }
+
+
+    /*animations*/
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+            -moz-transform: rotateZ(0deg);
+            -webkit-transform: rotateZ(0deg);
+            -o-transform: rotateZ(0deg);
+            -ms-transform: rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+            -moz-transform: rotateZ(360deg);
+            -webkit-transform: rotateZ(360deg);
+            -o-transform: rotateZ(360deg);
+            -ms-transform: rotateZ(360deg);
+        }
+    }
+
+    @keyframes grow {
+        0% {
+            transform: scale(1.0);
+            -moz-transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+            -o-transform: scale(1.0);
+            -ms-transform: scale(1.0);
+        }
+
+        100% {
+            transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+        }
+    }
+
+    @keyframes glowing {
+        0% {
+            box-shadow: 0 0 -10px #c4a300;
+        }
+
+        40% {
+            box-shadow: 0 0 20px #c4a300;
+        }
+
+        60% {
+            box-shadow: 0 0 20px #c4a300;
+        }
+
+        100% {
+            box-shadow: 0 0 -10px #c4a300;
+        }
+    }
+}
