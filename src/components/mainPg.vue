@@ -25,10 +25,7 @@
         <div id="recorder">
             <input type="button" class="recButton" value="Record" @click="callRecord()">
         </div>
-        <div id="carousel">
-            <h3>“Recording the sound of something that is within arms reach.”</h3>
-        </div>
-        <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+       <div id="carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <p>"Hum the last song you heard on the radio"</p>
@@ -43,12 +40,12 @@
                     <p>"Capture the sound of a happy doggo"</p>
                 </div>
             </div>
-        </div>-->
+        </div>
         <img src="../assets/arrow.svg" id="arrow" @click="move()">
         <div id="libray">
             <h2>Here is what the community sounds like!</h2>
             <div id="audio" class="audio">
-                <button class="player yellowPink" :value="1" @click="playSong("")">
+                <button class="player yellowPink" :value="1" @click="playSong('../assets/coins.wav')">
                     <img src="../assets/play.svg" class="play" id="playOne">
                 </button>
                 <button class="player pinkBlue" :value="2" @click="playSong('../assets/coins.wav')">
