@@ -3,9 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import jQuery from "jquery";
-global.jQuery = jQuery;
-global.$ = jQuery;
+import jQuery from 'jquery'
+global.jQuery = jQuery
+global.$ = jQuery
 
 Vue.config.productionTip = false;
 
