@@ -14,7 +14,6 @@
 <script>
     'use strict'
     // @ is an alias to /src
-    import jump from 'jump.js'
     import Recording from '@/components/recordingComponent.vue'
     import Main from '@/components/main.vue'
     
@@ -24,12 +23,7 @@
             Main
         },
         methods: {
-            move() {
-                jump('.audio',{ duration: 1500})
-            },
-            callRecord() {
-                Main
-            }
+        
            
         }
         
