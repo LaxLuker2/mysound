@@ -26,7 +26,20 @@
       <input type="button" class="recButton" value="Record" @click="callRecord()">
     </div>
     <div id="carousel">
-      <h3>“Recording the sound of something that is within arms reach.”</h3>
+      <!-- <h3>“Recording the sound of something that is within arms reach.”</h3> -->
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p>Text 1</p>
+          </div>
+          <div class="carousel-item">
+            <p>Text 2</p>
+          </div>
+          <div class="carousel-item">
+            <p>Text 3</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <img src="../assets/arrow.svg" id="arrow" @click="move()">

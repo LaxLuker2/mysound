@@ -11,7 +11,7 @@
       <MainPG/>
     </div>
     <div v-else>
-      <WebPage/>>
+      <WebPage/>
     </div>
   </div>
 </template>
@@ -30,15 +30,15 @@ export default {
   },
   data() {
     return {
-      mobile: false
+      mobile: true
     };
   },
   methods: {
     onResize() {
-      if (window.innerWidth > 500) {
-        this.mobile = false;
-      } else {
+      if (window.width < 900) {
         this.mobile = true;
+      } else {
+        this.mobile = false;
       }
     }
   },
