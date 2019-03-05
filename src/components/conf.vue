@@ -37,7 +37,10 @@ export default {
   methods: {
       callMain() {
           this.$router.push('recorder');
-      }
+      },
+      callWelcome() {
+      this.$router.push("welcome=1");
+    },
   }
 };
 </script>

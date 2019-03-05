@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     onResize() {
-      if (window.width < 900) {
+      if (window.innerWidth < 850) {
         this.mobile = true;
       } else {
         this.mobile = false;
@@ -44,6 +44,7 @@ export default {
   },
   created() {
     window.addEventListener("resize", this.onResize);
+    this.onResize();
   },
 
   beforeDestroy() {

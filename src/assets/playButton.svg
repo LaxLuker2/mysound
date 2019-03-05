@@ -74,8 +74,6 @@
 <rect x="238" y="32" width="5" height="70" fill="#828282"/>
 </g>
 </g>
-<circle opacity="0.5" cx="128" cy="67" r="20" fill="#333333"/>
-<path d="M136 67.5L124.75 73.9952L124.75 61.0048L136 67.5Z" fill="#F2F2F2"/>
 <defs>
 <linearGradient id="paint0_linear" x1="128" y1="0" x2="128" y2="135" gradientUnits="userSpaceOnUse">
 <stop stop-color="#F136EE"/>

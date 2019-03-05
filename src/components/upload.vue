@@ -25,8 +25,7 @@
     <div id="chimelogo"></div>
     <div id="play">
       <input type="button" id="playbutton" @click="play()">
-      <div id="soundwaves"></div>
-      <div id="playsymbol"></div>
+      
     </div>
     <div class="goodjob">
       <h1>Good Job</h1>
@@ -38,9 +37,12 @@
         <input type="button" class="recButton" value="Upload" @click='handleSubmit(e)'>
       </div>-->
       <div id="recorder">
+          <div id="uploadUI">
+          <input type="button" id="resButton" value="Retry" @click='callRecord()'>
         <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
           <input type="submit" value="Upload" class="recButton submit">
         </form>
+          </div>
       </div>
     </div>
   </div>
@@ -88,6 +90,12 @@ export default {
     },
     callConf() {
       this.$router.push("conf");
+    },
+    callRecord() {
+      this.$router.push("recorder");
+    },
+      callWelcome() {
+      this.$router.push("welcome=1");
     },
     play() {
       audioSound.play();

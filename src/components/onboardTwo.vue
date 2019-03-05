@@ -41,6 +41,9 @@
               callHome() {
                 this.$router.push('/');
             },
+            callWelcome() {
+      this.$router.push("welcome=1");
+    },
                toggleMenu() {
 
                 $(".popout").toggle("slide");

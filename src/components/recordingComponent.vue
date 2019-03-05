@@ -34,7 +34,7 @@
         <img src="../assets/rec.svg" id="rec" class="rec Record" @click="record()">
         <img src="../assets/reset.svg" id="reset" @click="restart()">
       </div>
-      <img src="../assets/recText.svg" id="recText" @click>
+      <img src="../assets/recText.svg" id="recText">
     </div>
   </div>
 </template>
@@ -46,6 +46,7 @@ var chunks = [];
 var blob;
 var myVar;
 let whatIsThis;
+var reset = false;
 
 export default {
   name: "Recording",
@@ -93,8 +94,13 @@ export default {
           window.audioURL = audioURL;
 
           window.blob = blob;
-
-          whatIsThis.callUpload();
+            if(reset === true){
+                reset = false;
+                mediaRecorder.start(250);
+            }
+            else{
+                whatIsThis.callUpload();
+            }
         };
       });
     },
@@ -111,14 +117,20 @@ export default {
     },
     stop() {
       mediaRecorder.stop();
-      clearInterval(myVar);
     },
     pause() {
-      mediaRecorder.pause();
+        if(mediaRecorder.state === 'paused'){
+            mediaRecorder.resume();
+        }
+        else{
+            mediaRecorder.pause();
+        }
     },
     restart() {
-      mediaRecorder.stop();
-      mediaRecorder.start(250);
+     if(reset === false){
+         reset = true;
+         mediaRecorder.stop();
+     }
     }
   },
   created() {
@@ -127,11 +139,6 @@ export default {
     this.record();
     whatIsThis = this;
   }
-  // Did you forget that it should be destroyed?
-  // beforeDestroy() {
-  //   //clearInterval(myVar);
-  //   //window.addEventListener("popstate", this.stop);
-  // }
 };
 </script>
 
