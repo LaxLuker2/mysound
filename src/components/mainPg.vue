@@ -36,56 +36,56 @@
         <button
           class="player yellowPink"
           :value="1"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playOne">
         </button>
         <button
           class="player pinkBlue"
           :value="2"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playTwo">
         </button>
         <button
           class="player pinkOrange"
           :value="3"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playThree">
         </button>
         <button
           class="player limeGreen"
           :value="4"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playFour">
         </button>
         <button
           class="player pinkBlue"
           :value="5"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playFive">
         </button>
         <button
           class="player yellowPink"
           :value="6"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="songSix">
         </button>
         <button
           class="player limeGreen"
           :value="7"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="songSeven">
         </button>
         <button
           class="player pinkOrange"
           :value="8"
-          @click="playSong("../assets/Coins%20Poured%20Out%2001.wav")"
+          @click="playSong('../assets/Coins%20Poured%20Out%2001.wav')"
         >
           <img src="../assets/play.svg" class="play" id="songEight">
         </button>
