@@ -25,8 +25,7 @@
     <div id="chimelogo"></div>
     <div id="play">
       <input type="button" id="playbutton" @click="play()">
-      <div id="soundwaves"></div>
-      <div id="playsymbol"></div>
+     
     </div>
     <div class="goodjob">
       <h1>Good Job</h1>
