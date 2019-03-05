@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     
-    <div id="chimelogo"></div>
+     <div class="header">
+            <div class="logoH"><img src="../assets/logoB.svg"></div>
+        </div>
       <div id="confpeople"></div>
     <div class="thankyou">
         <h1>Thank You!</h1>
@@ -14,10 +16,7 @@
                  </div>
   </div>
    
-    
-    
-
-    
+ 
  </div>
   
 </template>

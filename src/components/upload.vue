@@ -22,7 +22,9 @@
         <img id="logoC" src="../assets/logoC.svg">
       </div>
     </div>
-    <div id="chimelogo"></div>
+   <div class="header">
+            <div class="logoH"><img src="../assets/logoB.svg"></div>
+        </div>
     <div id="play">
       <input type="button" id="playbutton" @click="play()">
       

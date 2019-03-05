@@ -1,13 +1,18 @@
 <template>
   <div class="home">
     <div class="header"></div>
-    <div id="record">
-      <div id="outer"></div>
-      <div id="middle"></div>
-      <div id="center"></div>
+    <div v-if="mobile">
+      <div id="record">
+        <div id="outer"></div>
+        <div id="middle"></div>
+        <div id="center"></div>
+      </div>
+      <div class="logo"></div>
+      <MainPG/>
     </div>
-    <div class="logo"></div>
-    <MainPG/>
+    <div v-else>
+      <WebPage/>
+    </div>
   </div>
 </template>
 <script>
@@ -15,12 +20,35 @@
 // @ is an alias to /src
 import Recording from "@/components/recordingComponent.vue";
 import MainPG from "@/components/mainPg.vue";
+import WebPage from "@/components/webPage";
 
 export default {
   name: "home",
   components: {
-    MainPG
+    MainPG,
+    WebPage
   },
-  methods: {}
+  data() {
+    return {
+      mobile: true
+    };
+  },
+  methods: {
+    onResize() {
+      if (window.innerWidth < 850) {
+        this.mobile = true;
+      } else {
+        this.mobile = false;
+      }
+    }
+  },
+  created() {
+    window.addEventListener("resize", this.onResize);
+    this.onResize();
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  }
 };
 </script>
