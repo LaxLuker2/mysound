@@ -1,15 +1,23 @@
 <template>
        <div class="home">
-        <div class="menu">
+             <div class="menu">
             <div id="overlay"></div>
-            <div class="hamburger" @click='toggleMenu()'><img src="../assets/menu.svg"></div>
+            <div class="hamburger" @click="toggleMenu()">
+                <img src="../assets/menuwhite.svg">
+            </div>
             <div class="popout">
-                <img id="exit" @click='toggleMenu()' src="../assets/close.svg">
+                <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
                 <ul>
-                    <li><a href="https://www.rit.edu/imagine/" target="_blank">About</a></li>
+                    <li>
+                        <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
+                    </li>
                     <li @click="callWelcome()">How to</li>
-                    <li><a href="https://www.rit.edu/imagine/" target="_blank">Imagine RIT</a></li>
-                    <li><a href="mailto:chime.nmtp@gmail.com">Contact</a></li>
+                    <li>
+                        <a href="https://www.rit.edu/imagine/" target="_blank">Imagine RIT</a>
+                    </li>
+                    <li>
+                        <a href="mailto:chime.nmtp@gmail.com">Contact</a>
+                    </li>
                 </ul>
                 <img id="logoC" src="../assets/logoC.svg">
             </div>

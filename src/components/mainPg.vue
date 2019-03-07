@@ -9,7 +9,7 @@
                 <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
                 <ul>
                     <li>
-                        <a href="https://www.rit.edu/imagine/" target="_blank">About</a>
+                        <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
                     </li>
                     <li @click="callWelcome()">How to</li>
                     <li>
@@ -77,6 +77,7 @@
 <script>
     "use strict";
     import jump from "jump.js";
+    var audio = new Audio('../assets/keys.wav');
     export default {
         name: "mainPg",
         props: {
@@ -89,12 +90,13 @@
                 });
             },
             playSong(song) {
-                if (song) {
-                    var audio = new Audio(song);
-                    var promise = audio.play();
+            
+                    console.log(click)
+                     //audio = new Audio(song);
+                    var promise = this.audio.play();
                     if (promise != undefined) {
-                        promise.then(_ => {}).catch(error => {});
-                    }
+                        promise.then(_ => {}).catch(error => {console.log(error)});
+                
                 }
             },
             callRecord() {
