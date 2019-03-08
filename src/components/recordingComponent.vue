@@ -9,9 +9,10 @@
 
 <script>
 "use strict";
-var mediaRecorder;
-var chunks = [];
-var blob;
+let mediaRecorder;
+let chunks = [];
+let blob;
+let constraints = { audio: true, video: false };
 
 export default {
   name: "Recording",
@@ -37,56 +38,95 @@ export default {
 
       try {
         alert("in try");
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-          if ($(".rec").hasClass("Record")) {
-            mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start(250);
-            console.log(mediaRecorder.state);
-            console.log("recorder started");
-            alert("recorder started");
-            $(".rec").css("background-color", "red");
-            $(".rec").html("Recording");
-            $(".rec").addClass("Recording");
-            $(".rec").removeClass("Record");
+        // if (navigator.mediaDevices === undefined) {
+        //   navigator.mediaDevices = {};
+        //   alert("navigator.mediaDevices = undefined");
+        // }
 
-            chunks = [];
+        // // Some browsers partially implement mediaDevices. We can't just assign an object
+        // // with getUserMedia as it would overwrite existing properties.
+        // // Here, we will just add the getUserMedia property if it's missing.
+        // if (navigator.mediaDevices.getUserMedia === undefined) {
+        //   alert("navigator.mediaDevices.getUserMedia = undefined");
+        //   navigator.mediaDevices.getUserMedia = function(constraints) {
+        //     // First get ahold of the legacy getUserMedia, if present
+        //     var getUserMedia =
+        //       navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-            mediaRecorder.ondataavailable = function(e) {
-              //console.log('Data available...');
-              //console.log(e.data);
-              console.dir(e);
+        //     // Some browsers just don't implement it - return a rejected promise with an error
+        //     // to keep a consistent interface
+        //     // if (!getUserMedia) {
+        //     //   return Promise.reject(
+        //     //     alert("getUserMedia is not implemented in this browser")
+        //     //   );
+        //     // }
 
-              chunks.push(e.data);
+        //     // // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+        //     // return new Promise(function(resolve, reject) {
+        //     //   getUserMedia.call(navigator, constraints, resolve, reject);
+        //     // });
+        //   };
+        // }
+
+        alert("navigator");
+        alert(navigator);
+        alert("navigator.mediaDevices");
+        alert(navigator.mediaDevices);
+
+        navigator.mediaDevices
+          .getUserMedia({ audio: true, video: false })
+          .then(stream => {
+            if ($(".rec").hasClass("Record")) {
+              mediaRecorder = new MediaRecorder(stream);
+              mediaRecorder.start(250);
+              console.log(mediaRecorder.state);
+              console.log("recorder started");
+              alert("recorder started");
+              $(".rec").css("background-color", "red");
+              $(".rec").html("Recording");
+              $(".rec").addClass("Recording");
+              $(".rec").removeClass("Record");
+
+              chunks = [];
+
+              mediaRecorder.ondataavailable = function(e) {
+                //console.log('Data available...');
+                //console.log(e.data);
+                console.dir(e);
+
+                chunks.push(e.data);
+              };
+            } else {
+              mediaRecorder.stop();
+              console.log(mediaRecorder.state);
+              console.log("recorder stopped");
+              alert("recorder stopped");
+              $(".rec").css("background-color", "blue");
+              $(".rec").html("Record");
+              $(".rec").removeClass("Recording");
+              $(".rec").addClass("Record");
+            }
+            mediaRecorder.onstop = function(e) {
+              console.log("recorder stopped");
+
+              var blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+              chunks = [];
+              var audioURL = window.URL.createObjectURL(blob);
+              //audio.src = audioURL;
+
+              $(".downloadLink").attr("href", audioURL);
+
+              var rand = Math.floor(Math.random() * 10000000);
+              var name = "mysound_" + rand + ".mp3";
+              $(".downloadLink").attr("download", name);
+              $(".downloadLink").attr("name", name);
             };
-          } else {
-            mediaRecorder.stop();
-            console.log(mediaRecorder.state);
-            console.log("recorder stopped");
-            alert("recorder stopped");
-            $(".rec").css("background-color", "blue");
-            $(".rec").html("Record");
-            $(".rec").removeClass("Recording");
-            $(".rec").addClass("Record");
-          }
-          mediaRecorder.onstop = function(e) {
-            console.log("recorder stopped");
-
-            var blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-            chunks = [];
-            var audioURL = window.URL.createObjectURL(blob);
-            //audio.src = audioURL;
-
-            $(".downloadLink").attr("href", audioURL);
-
-            var rand = Math.floor(Math.random() * 10000000);
-            var name = "mysound_" + rand + ".mp3";
-            $(".downloadLink").attr("download", name);
-            $(".downloadLink").attr("name", name);
-          };
-        });
-      } catch (e) {
-        alert("err");
-        alert(e);
+          });
+      } catch (err) {
+        alert("error");
+        alert(err);
+        alert(err.name);
+        alert(err.message);
       }
     }
   }
