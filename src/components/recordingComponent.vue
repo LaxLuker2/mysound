@@ -31,7 +31,7 @@
     <div id="footer">
       <div id="recording">
         <img src="../assets/pause.svg" id="pause" @click="pause()">
-        <img src="../assets/rec.svg" id="rec" class="rec Record" @click="record()">
+        <img src="../assets/rec.svg" id="rec" class="Record rec" @click="record()">
         <img src="../assets/reset.svg" id="reset" @click="restart()">
       </div>
       <img src="../assets/recText.svg" id="recText">
@@ -41,12 +41,13 @@
 
 <script>
 "use strict";
-var mediaRecorder;
-var chunks = [];
-var blob;
-var myVar;
+let mediaRecorder;
+let chunks = [];
+let blob;
+let myVar;
 let whatIsThis;
-var reset = false;
+let reset = false;
+let recorder;
 
 export default {
   name: "Recording",
@@ -62,47 +63,64 @@ export default {
       this.$router.push("recorder");
     },
     record() {
-      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-        if ($(".rec").hasClass("Record")) {
-          mediaRecorder = new MediaRecorder(stream);
-          mediaRecorder.start(250);
-          console.log(mediaRecorder.state);
-          console.log("recorder started");
-          $(".rec").removeClass("Record");
-          chunks = [];
+      try {
+        if ($("#rec").hasClass("Record")) {
+          //CREDIT For audio recording
+          /* https://recordrtc.org/ https://www.npmjs.com/package/recordrtc */
+          /* https://github.com/muaz-khan/RecordRTC */
+          /* https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html */
 
-          mediaRecorder.ondataavailable = function(e) {
-            //console.log('Data available...');
-            //console.log(e.data);
-            console.dir(e);
+          this.captureMicrophone(function(microphone) {
+            recorder = RecordRTC(microphone, {
+              type: "audio",
+              recorderType: StereoAudioRecorder,
+              desiredSampRate: 16000
+            });
 
-            chunks.push(e.data);
-          };
+            recorder.startRecording();
+
+            // release microphone on stopRecording
+            recorder.microphone = microphone;
+
+            $(".rec").addClass("Recording");
+            $(".rec").removeClass("Record");
+          });
         } else {
-          mediaRecorder.stop();
-          console.log(mediaRecorder.state);
-          console.log("recorder stopped");
-          $(".rec").addClass("Record");
+          recorder.stopRecording(this.stopRecordingCallback);
         }
-        mediaRecorder.onstop = function(e) {
-          console.log("recorder is stopped");
-
-          blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-          chunks = [];
-          var audioURL = window.URL.createObjectURL(blob);
-
-          window.audioURL = audioURL;
-
-          window.blob = blob;
-            if(reset === true){
-                reset = false;
-                mediaRecorder.start(250);
-            }
-            else{
-                whatIsThis.callUpload();
-            }
-        };
-      });
+      } catch (error) {
+        alert(error);
+        console.error("error" + error);
+        alert(error);
+      }
+    },
+    captureMicrophone(callback) {
+      //credit: https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then(callback)
+        .catch(function(error) {
+          alert("Unable to access your microphone.");
+          console.error(error);
+          alert(error);
+        });
+    },
+    stopRecordingCallback() {
+      //credit: https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html
+      $(".rec").removeClass("Recording");
+      $(".rec").addClass("Record");
+      var blob = recorder.getBlob();
+      console.log(blob);
+      var audioURL = window.URL.createObjectURL(blob);
+      window.audioURL = audioURL;
+      window.blob = blob;
+      recorder.microphone.stop();
+      if (reset === true) {
+        reset = false;
+        this.record();
+      } else {
+        this.callUpload();
+      }
     },
     timer() {
       this.record();
@@ -119,23 +137,33 @@ export default {
       mediaRecorder.stop();
     },
     pause() {
-        if(mediaRecorder.state === 'paused'){
-            mediaRecorder.resume();
-        }
-        else{
-            mediaRecorder.pause();
-        }
+      if (mediaRecorder.state === "paused") {
+        mediaRecorder.resume();
+      } else {
+        mediaRecorder.pause();
+      }
     },
     restart() {
-     if(reset === false){
-         reset = true;
-         mediaRecorder.stop();
-     }
+      if (reset === false) {
+        reset = true;
+        mediaRecorder.stop();
+      }
     }
   },
-  created() {
-    //this.timer();
-    //window.addEventListener("popstate", this.stop);
+  mounted() {
+    let attachScript = document.createElement("script");
+    attachScript.setAttribute(
+      "src",
+      "https://cdn.webrtc-experiment.com/RecordRTC.js"
+    );
+    document.head.appendChild(attachScript);
+    let attachScript2 = document.createElement("script");
+    attachScript2.setAttribute(
+      "src",
+      "https://webrtc.github.io/adapter/adapter-latest.js"
+    );
+    document.head.appendChild(attachScript2);
+
     this.record();
     whatIsThis = this;
   }
@@ -160,8 +188,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

@@ -155,10 +155,12 @@
     mix-blend-mode: hard-light;
   }
 
-  #content #carousel {
-    min-width: 75vw;
-    margin: 0 12.5vw 25px 12.5vw;
-    display: block;
+  #content .carousel {
+    width: 50vw;
+    margin: auto auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
   }
 
   #carousel h3 {
@@ -170,13 +172,28 @@
     text-align: center;
     color: #4f4f4f;
   }
+    .carousel{
+    font-style: normal;
+    font-family: "Work Sans";
+    font-weight: normal;
+    line-height: 25px;
+    font-size: 16px;
+    text-align: center;
+    color: #4f4f4f;
+    }
+  #footer {
+    bottom: 10vh;
+    position: absolute;
+    width: 100vw;
+   align-content: center;
+   display: block;
+    justify-content: center;
+  }
 
   #recording {
-    width: 30vw;
-    margin: auto 35vw auto 35vw;
-    align-content: center;
-    justify-content: center;
-    display: block;
+   width: 40vw;
+   align-self: center;
+   margin: auto auto;
   }
 
   #arrow {
@@ -189,31 +206,30 @@
   }
 
   #recording #rec {
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
     margin: 4.1vw;
+    align-content: center;
   }
 
   #recording #pause {
-    width: 14px;
-    height: 20px;
+    width: 24px;
+    height: 30px;
+    right: 0;
   }
 
   #recording #reset {
-    width: 23.12px;
-    height: 20px;
-  }
-
-  #footer {
-    bottom: 10vh;
-    position: absolute;
+    width: 33px;
+    height: 30px;
   }
 
   #footer #recText {
     margin: auto auto;
+    margin-left: 35vw;
     align-content: center;
     justify-content: center;
     display: block;
+    align-self: center;
   }
 
   #libray {
@@ -298,8 +314,9 @@
     align-content: center;
     justify-content: center;
     display: block;
-    background: url(chimelogo.svg);
+    background: url(logoB.svg);
     outline: none;
+    margin-top: 15px;
   }
 
   #soundwaves {

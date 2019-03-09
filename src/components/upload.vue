@@ -22,10 +22,13 @@
         <img id="logoC" src="../assets/logoC.svg">
       </div>
     </div>
-    <div id="chimelogo"></div>
+    <div class="header">
+      <div class="logoH">
+        <img src="../assets/logoB.svg">
+      </div>
+    </div>
     <div id="play">
       <input type="button" id="playbutton" @click="play()">
-      
     </div>
     <div class="goodjob">
       <h1>Good Job</h1>
@@ -37,12 +40,12 @@
         <input type="button" class="recButton" value="Upload" @click='handleSubmit(e)'>
       </div>-->
       <div id="recorder">
-          <div id="uploadUI">
-          <input type="button" id="resButton" value="Retry" @click='callRecord()'>
-        <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
-          <input type="submit" value="Upload" class="recButton submit">
-        </form>
-          </div>
+        <div id="uploadUI">
+          <input type="button" id="resButton" value="Retry" @click="callRecord()">
+          <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
+            <input type="submit" value="Upload" class="recButton submit">
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -94,7 +97,7 @@ export default {
     callRecord() {
       this.$router.push("recorder");
     },
-      callWelcome() {
+    callWelcome() {
       this.$router.push("welcome=1");
     },
     play() {
@@ -134,8 +137,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

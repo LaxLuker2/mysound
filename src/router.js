@@ -11,8 +11,6 @@ import Conf from "@/components/conf.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
@@ -31,22 +29,22 @@ export default new Router({
       // }
     },
     {
-     path: "/upload",
+      path: "/upload",
       name: "upload",
-      component: Upload 
+      component: Upload
     },
     {
-     path: "/Welcome=1",
+      path: "/Welcome=1",
       name: "welcome=1",
       component: WelcomeOne
     },
     {
-     path: "/Welcome=2",
+      path: "/Welcome=2",
       name: "welcome=2",
       component: WelcomeTwo
     },
     {
-     path: "/Welcome=3",
+      path: "/Welcome=3",
       name: "welcome=3",
       component: WelcomeThree
     },

@@ -1,25 +1,22 @@
 <template>
   <div class="hello">
-    
-    <div id="chimelogo"></div>
-      <div id="confpeople"></div>
-    <div class="thankyou">
-        <h1>Thank You!</h1>
-        <p>We really appreciate you chiming in. Please come join us at Imagine RIT on April 27th and be a part of our live music experience.</p>
+    <div class="header">
+      <div class="logoH">
+        <img src="../assets/logoB.svg">
       </div>
+    </div>
+    <div id="confpeople"></div>
+    <div class="thankyou">
+      <h1>Thank You!</h1>
+      <p>We really appreciate you chiming in. Please come join us at Imagine RIT on April 27th and be a part of our live music experience.</p>
+    </div>
     <h1>{{ msg }}</h1>
-  <div id="content">
-     <div id="recorder">
-                <input type="button" class="retryButton" value="Record Again" @click='callMain()'>
-                 </div>
+    <div id="content">
+      <div id="recorder">
+        <input type="button" class="retryButton" value="Record Again" @click="callMain()">
+      </div>
+    </div>
   </div>
-   
-    
-    
-
-    
- </div>
-  
 </template>
 
 <script>
@@ -35,12 +32,12 @@ export default {
     msg: String
   },
   methods: {
-      callMain() {
-          this.$router.push('recorder');
-      },
-      callWelcome() {
-      this.$router.push("welcome=1");
+    callMain() {
+      this.$router.push("recorder");
     },
+    callWelcome() {
+      this.$router.push("welcome=1");
+    }
   }
 };
 </script>
@@ -50,7 +47,8 @@ export default {
 .btn {
   font-weight: bold;
 }
-.btn-primary, .btn-warning {
+.btn-primary,
+.btn-warning {
   margin-right: 10px;
 }
 h3 {
@@ -63,8 +61,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
