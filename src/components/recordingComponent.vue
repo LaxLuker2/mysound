@@ -34,8 +34,8 @@
         <span class="time">00</span>
       </div>
       <div id="recording">
-        <div id="pauseBT" class="pauseBT" @click="pause()"></div>
-        <img src="../assets/rec.svg" id="rec" class="Record rec" @click="record()">
+        <img src="../assets/pause.svg" id="pauseBT" class="pauseBT" @click="pause()">
+        <img src="../assets/rec.svg" id="rec" class="Record rec recPulse" @click="record()">
         <img src="../assets/reset.svg" id="reset" @click="restart()">
       </div>
       <img src="../assets/recText.svg" id="recText">
@@ -79,7 +79,6 @@ export default {
           /* https://recordrtc.org/ https://www.npmjs.com/package/recordrtc */
           /* https://github.com/muaz-khan/RecordRTC */
           /* https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html */
-
           this.captureMicrophone(function(microphone) {
             recorder = RecordRTC(microphone, {
               type: "audio",
@@ -137,24 +136,28 @@ export default {
     pause() {
       if (recorder.state === "paused") {
         recorder.resumeRecording();
-        $("#pauseBT").css("src", "url(pause.svg)");
+        $("#pauseBT").removeClass('pauseAnim');
+        $("#rec").addClass('recPulse');
         $(".recPlay").css("-webkit-animation-play-state", "running");
       } else {
         recorder.pauseRecording();
-        $("#pauseBT").css("src", "url(pausePlay.svg)");
+        $("#rec").removeClass('recPulse');
+        $("#pauseBT").addClass('pauseAnim');
         $(".recPlay").css("-webkit-animation-play-state", "paused");
       }
     },
     restart() {
       if (reset === false) {
         reset = true;
+        $("#reset").addClass('resetSpin');
         recorder.stopRecording();
         this.record();
         counter = 0;
       }
     },
     countdown() {
-      if (recorder.state != "stopped") {
+      if (recorder.state != "stopped" && recorder.state != "paused" ) {
+          $("#reset").removeClass('resetSpin');
         counter = counter + 1;
         if (counter === 10) {
           clearInterval(stopTimer);
