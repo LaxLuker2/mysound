@@ -46,7 +46,7 @@
 <script>
 "use strict";
 let recorder;
-let myVar;
+let stopTimer;
 let whatIsThis;
 let reset = false;
 let counter = 0;
@@ -59,26 +59,9 @@ export default {
     msg: String
   },
   mounted() {
-    //Attach scripts to head for the recorderRTC API
-    let attachScript = document.createElement("script");
-    attachScript.setAttribute(
-      "src",
-      "https://cdn.webrtc-experiment.com/RecordRTC.js"
-    );
-    document.head.appendChild(attachScript);
-    let attachScript2 = document.createElement("script");
-    attachScript2.setAttribute(
-      "src",
-      "https://webrtc.github.io/adapter/adapter-latest.js"
-    );
-    document.head.appendChild(attachScript2);
-
-    counter = 0;
-
-    myVar = setInterval(() => {
+    stopTimer = setInterval(() => {
       whatIsThis.countdown();
     }, 1000);
-
     this.record();
     whatIsThis = this;
   },
@@ -140,9 +123,6 @@ export default {
       window.audioURL = audioURL;
       window.blob = blob;
       recorder.microphone.stop();
-
-      //this.clearTime();
-
       if (reset === true) {
         reset = false;
         this.record();
@@ -150,14 +130,6 @@ export default {
         this.callUpload();
       }
     },
-
-    // timer() {
-    //   this.record();
-    //   myVar = setInterval(() => {
-    //     this.record();
-    //     this.callUpload();
-    //   }, 10000);
-    // },
     toggleMenu() {
       $(".popout").toggle("slide");
       $("#overlay").fadeToggle();
@@ -185,6 +157,7 @@ export default {
       if (recorder.state != "stopped") {
         counter = counter + 1;
         if (counter === 10) {
+          clearInterval(stopTimer);
           $(".time").html(counter);
           counter = 0;
           //stop recording and call the callback function!
@@ -193,10 +166,6 @@ export default {
           $(".time").html("0" + counter);
         }
       }
-    },
-    clearTime() {
-      //doesnt work
-      window.clearInvterval(this.myVar);
     }
   }
 };

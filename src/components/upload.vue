@@ -1,33 +1,34 @@
 <template>
   <div class="hello">
-       <div class="menu">
-            <div id="overlay"></div>
-            <div class="hamburger" @click="toggleMenu()">
-                <img src="../assets/menu.svg" width="20px" height="17px">
-            </div>
-            <div class="popout">
-                <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
-                <ul>
-                    <li>
-                        <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
-                    </li>
-                    <li @click="callWelcome()">How to</li>
-                    <li>
-                        <a href="https://www.rit.edu/imagine/" target="_blank">Imagine RIT</a>
-                    </li>
-                    <li>
-                        <a href="mailto:chime.nmtp@gmail.com">Contact</a>
-                    </li>
-                </ul>
-                <img id="logoC" src="../assets/logoC.svg">
-            </div>
-        </div>
-   <div class="header">
-            <div class="logoH"><img src="../assets/logoB.svg" @click="callHome()"></div>
-        </div>
+    <div class="menu">
+      <div id="overlay"></div>
+      <div class="hamburger" @click="toggleMenu()">
+        <img src="../assets/menu.svg" width="20px" height="17px">
+      </div>
+      <div class="popout">
+        <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
+        <ul>
+          <li>
+            <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
+          </li>
+          <li @click="callWelcome()">How to</li>
+          <li>
+            <a href="https://www.rit.edu/imagine/" target="_blank">Imagine RIT</a>
+          </li>
+          <li>
+            <a href="mailto:chime.nmtp@gmail.com">Contact</a>
+          </li>
+        </ul>
+        <img id="logoC" src="../assets/logoC.svg">
+      </div>
+    </div>
+    <div class="header">
+      <div class="logoH">
+        <img src="../assets/logoB.svg" @click="callHome()">
+      </div>
+    </div>
     <div id="play">
       <input type="button" id="playbutton" @click="play()">
-      
     </div>
     <div class="goodjob">
       <h1>Good Job</h1>
@@ -39,12 +40,12 @@
         <input type="button" class="recButton" value="Upload" @click='handleSubmit(e)'>
       </div>-->
       <div id="recorder">
-          <div id="uploadUI">
-          <input type="button" id="resButton" value="Retry" @click='callRecord()'>
-        <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
-          <input type="submit" value="Upload" class="recButton submit">
-        </form>
-          </div>
+        <div id="uploadUI">
+          <input type="button" id="resButton" value="Retry" @click="callRecord()">
+          <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
+            <input type="submit" value="Upload" class="recButton submit">
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -96,11 +97,11 @@ export default {
     callRecord() {
       this.$router.push("recorder");
     },
-      callWelcome() {
+    callWelcome() {
       this.$router.push("welcome=1");
     },
-    callHome(){
-        this.$router.push('/');
+    callHome() {
+      this.$router.push("/");
     },
     play() {
       audioSound.play();
