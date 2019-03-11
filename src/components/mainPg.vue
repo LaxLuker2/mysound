@@ -47,30 +47,38 @@
       <div id="audio" class="audio">
         <button
           class="player yellowPink"
+          :value="1"
           @click="playSong('https://mysound.cad.rit.edu/audioFiles/coins.wav')"
         >
           <img src="../assets/play.svg" class="play" id="playOne">
         </button>
-        <button class="player pinkBlue" :value="2" @click="playSong('../assets/coins.wav')">
-          <img src="../assets/play.svg" class="play" id="playTwo">
-        </button>
-        <button class="player pinkOrange" :value="3" @click="playSong('../assets/laugh.wav')">
+        <button
+          class="player pinkOrange"
+          :value="2"
+          @click="playSong('https://mysound.cad.rit.edu/audioFiles/laugh.wav')"
+        >
           <img src="../assets/play.svg" class="play" id="playThree">
         </button>
-        <button class="player limeGreen" :value="4" @click="playSong('../assets/sLaugh.wav')">
+        <button
+          class="player limeGreen"
+          :value="3"
+          @click="playSong('https://mysound.cad.rit.edu/audioFiles/sLaugh.wav')"
+        >
           <img src="../assets/play.svg" class="play" id="playFour">
         </button>
-        <button class="player pinkBlue" :value="5" @click="playSong('../assets/keys.wav')">
+        <button
+          class="player pinkBlue"
+          :value="4"
+          @click="playSong('https://mysound.cad.rit.edu/audioFiles/keys.wav')"
+        >
           <img src="../assets/play.svg" class="play" id="playFive">
         </button>
-        <button class="player yellowPink" :value="6" @click="playSong('../assets/knock.wav')">
+        <button
+          class="player yellowPink"
+          :value="5"
+          @click="playSong('https://mysound.cad.rit.edu/audioFiles/knock.wav')"
+        >
           <img src="../assets/play.svg" class="play" id="songSix">
-        </button>
-        <button class="player limeGreen" :value="7" @click="playSong('../assets/coins.wav')">
-          <img src="../assets/play.svg" class="play" id="songSeven">
-        </button>
-        <button class="player pinkOrange" :value="8" @click="playSong('../assets/keys.wav')">
-          <img src="../assets/play.svg" class="play" id="songEight">
         </button>
       </div>
     </div>
