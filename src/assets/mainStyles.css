@@ -1,15 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700");
+
 @media only screen and (max-width: 850px) {
   #app {
     overflow: hidden;
+    overflow-x: hidden !important;
     font-family: "Helvetica";
     font-size: 16px;
-    width: 100vw;
+    width: auto;
+    max-width: auto;
     height: 100vh;
     padding: 0;
     margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+  }
+  #content {
+    background: #ffffff;
+    position: relative;
+    overflow-x: hidden;
   }
 
   h1 {
@@ -26,6 +35,7 @@
     align-content: center;
     justify-content: center;
     overflow: hidden;
+    overflow-x: hidden;
   }
 
   .recPlay {
@@ -42,6 +52,7 @@
     position: absolute;
     top: -40vw;
     z-index: -1;
+    overflow-x: hidden;
   }
 
   #record #middle {
@@ -50,7 +61,7 @@
     border-radius: 50%;
     background: linear-gradient(180deg, #f136ee 0%, #fb5154 100%);
     z-index: -1;
-    top: -12vw;
+    top: -12.5vw;
     position: absolute;
     mix-blend-mode: overlay;
   }
@@ -75,7 +86,7 @@
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: contain;
-    height: 34vh;
+    height: 36vh;
     width: 75vw;
     left: 31vw;
     top: 0vh;
@@ -99,7 +110,7 @@
   .logo #pin {
     position: absolute;
     top: -0.75vh;
-    left: 47.5vw;
+    align-self: center;
     height: 23vh;
     width: 65vw;
     background-image: url(recordPin.svg);
@@ -111,7 +122,7 @@
     top: 18vh;
     width: 100vw;
     z-index: 3;
-    font-family: "Helvetica";
+    font-family: Helvetica;
     font-weight: bold;
     line-height: normal;
     letter-spacing: -4px;
@@ -127,16 +138,16 @@
     width: 100vw;
   }
 
-  #content #recorder {
+  #recorder {
     display: flex;
     align-content: center;
     justify-content: center;
   }
 
-  #recorder .recButton {
+  .recButton {
     position: relative;
     min-width: 52vw;
-    font-family: "Helvetica";
+    font-family: Helvetica;
     font-weight: bold;
     line-height: normal;
     font-size: 18px;
@@ -150,13 +161,13 @@
     margin-bottom: 32px;
   }
 
-  #recorder .recButton:focus {
+  .recButton:focus {
     outline: 0;
     mix-blend-mode: hard-light;
   }
 
-  #content .carousel {
-    width: 50vw;
+  .carousel {
+    width: 70vw;
     margin: auto auto;
     display: flex;
     align-content: center;
@@ -172,7 +183,8 @@
     text-align: center;
     color: #4f4f4f;
   }
-    .carousel{
+
+  .carousel {
     font-style: normal;
     font-family: "Work Sans";
     font-weight: normal;
@@ -180,20 +192,18 @@
     font-size: 16px;
     text-align: center;
     color: #4f4f4f;
-    }
+  }
+
   #footer {
     bottom: 10vh;
     position: absolute;
     width: 100vw;
-   align-content: center;
-   display: block;
-    justify-content: center;
   }
 
-  #recording {
-   width: 40vw;
-   align-self: center;
-   margin: auto auto;
+  #timer {
+    display: block;
+    align-content: center;
+    justify-content: center;
   }
 
   #arrow {
@@ -204,26 +214,37 @@
     justify-content: center;
     display: block;
   }
-
-  #recording #rec {
-    width: 60px;
-    height: 60px;
-    margin: 4.1vw;
-    align-content: center;
+  #recording {
+    width: 40vw;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
   }
 
-  #recording #pause {
-    width: 24px;
-    height: 30px;
-    right: 0;
+  #pauseBT {
+    width: 35px;
+    height: 33px;
+    background-image: url(pause.svg);
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-size: 20px 24px;
+    padding-right: 20px;
+  }
+  #recBT {
+    width: 80px;
+    height: 80px;
+    margin-right: 0px;
   }
 
-  #recording #reset {
+  #resBT {
     width: 33px;
     height: 30px;
   }
 
-  #footer #recText {
+  #recText {
     margin: auto auto;
     margin-left: 35vw;
     align-content: center;
@@ -249,13 +270,13 @@
     color: #000000;
   }
 
-  #libray #audio {
+  #audio {
     display: flex;
     flex-wrap: wrap;
     width: 80vw;
   }
 
-  #audio .player {
+  .player {
     min-width: 37vw;
     height: 135px;
     max-width: 35vw;
@@ -268,11 +289,11 @@
     border: none;
   }
 
-  #audio .player:active {
+  .player:active {
     background-blend-mode: darken;
   }
 
-  #audio .player {
+  .player {
     justify-content: center;
   }
 
@@ -292,7 +313,7 @@
     background: linear-gradient(180deg, #e3f02d 0%, #66fc77 100%);
   }
 
-  #audio .player audio {
+  .player audio {
     visibility: hidden;
   }
 
@@ -302,7 +323,6 @@
     font-size: 36px;
     text-align: center;
     letter-spacing: -0.75px;
-
     color: #333333;
   }
 
@@ -455,21 +475,26 @@
   }
 
   .thankyou h1 {
-    font-family: "Arial";
-    font-weight: "bold";
-    text-align: center;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 30px;
     font-size: 32px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: -0.25px;
+
+    color: #333333;
   }
 
   .thankyou p {
-    position: relative;
-    font-family: "Arial";
-    left: 60px;
-    width: 270px;
-    text-align: center;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 25px;
     font-size: 16px;
+    text-align: center;
+
+    color: #4f4f4f;
   }
 
   .retryButton {
@@ -488,7 +513,14 @@
     box-sizing: border-box;
     border-radius: 27.5px;
     margin-bottom: 32px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 55px;
+  }
+
+  .retryButton:focus,
+  .retryButton:hover,
+  .retryButton:active,
+  .retryButton::after {
+    animation: toucheffect 0.3s fowards;
   }
 
   /*Onboarding - Alexia*/
@@ -500,14 +532,14 @@
     padding: 8px;
   }
 
-  .header .logoH {
+  .logoH {
     align-self: center;
     position: absolute;
     left: 42vw;
     z-index: 1;
   }
 
-  .header #skip {
+  #skip {
     right: 20px;
     position: absolute;
     font-family: Work Sans;
@@ -517,6 +549,20 @@
     font-size: 16px;
     text-align: right;
     color: #828282;
+  }
+
+  .image {
+    margin-top: 12vh;
+    width: 100vw;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .welcome {
@@ -549,39 +595,24 @@
     color: #4f4f4f;
     padding-bottom: 15px;
   }
-
-  .image {
-    margin-top: 50px;
-    width: 100vw;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .image img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   #next {
     position: absolute;
     bottom: 55px;
     width: 100vw;
   }
 
-  #next .bubbles {
+  .bubbles {
     align-self: center;
     position: absolute;
     left: 42vw;
   }
 
-  #next .nextArrow {
+  .nextArrow {
     right: 20px;
     position: absolute;
   }
 
-  #next .begin {
+  .begin {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -608,7 +639,7 @@
     z-index: 2;
   }
 
-  .menu #overlay {
+  #overlay {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -626,20 +657,18 @@
   .hamburger {
     position: fixed;
     float: right;
-    top: 8px;
+    top: 12px;
     left: 15px;
     z-index: 2;
-    height: 12px;
-    width: 15px;
   }
 
-  .popout #logoC {
+  #logoC {
     bottom: 30px;
     left: 15px;
     position: absolute;
   }
 
-  .popout #exit {
+  #exit {
     top: 15px;
     left: 15px;
     position: absolute;
@@ -677,6 +706,14 @@
     padding-bottom: 30px;
   }
 
+  button:active,
+  button:focus,
+  button--click,
+  button--click::after,
+  button::after {
+    animation: toucheffect 0.3s fowards;
+  }
+
   /*animations*/
   @keyframes spin {
     0% {
@@ -696,39 +733,27 @@
     }
   }
 
-  @keyframes grow {
+  @keyframes toucheffect {
     0% {
-      transform: scale(1);
-      -moz-transform: scale(1);
-      -webkit-transform: scale(1);
-      -o-transform: scale(1);
-      -ms-transform: scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.3;
     }
 
     100% {
-      transform: scale(1.2);
-      -moz-transform: scale(1.2);
-      -webkit-transform: scale(1.2);
-      -o-transform: scale(1.2);
-      -ms-transform: scale(1.2);
+      opacity: 1;
     }
   }
 
   @keyframes glowing {
     0% {
-      box-shadow: 0 0 -10px #c4a300;
-    }
-
-    40% {
-      box-shadow: 0 0 20px #c4a300;
-    }
-
-    60% {
-      box-shadow: 0 0 20px #c4a300;
+      box-shadow: 0 0 -30px #f136ee;
     }
 
     100% {
-      box-shadow: 0 0 -10px #c4a300;
+      box-shadow: 0 0 -30px #fb5154;
     }
   }
 }

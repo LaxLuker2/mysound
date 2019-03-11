@@ -9,7 +9,7 @@
         <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
         <ul>
           <li>
-            <a href="https://www.rit.edu/imagine/" target="_blank">About</a>
+            <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
           </li>
           <li @click="callWelcome()">How to</li>
           <li>
@@ -100,27 +100,8 @@ export default {
       });
     },
     playSong(song) {
-      console.log(song);
       var audio = new Audio(song);
       audio.play();
-      //   if (song) {
-      //     var audio = new Audio(song);
-      //     var playPromise = audio.play();
-      //     if (playPromise !== undefined) {
-      //       playPromise
-      //         .then(_ => {
-      //           // Automatic playback started!
-      //           // Show playing UI.
-      //           console.log("playing");
-      //         })
-      //         .catch(error => {
-      //           // Auto-play was prevented
-      //           // Show paused UI.
-      //           console.log("errror");
-      //           console.dir(error);
-      //         });
-      //     }
-      //   }
     },
     callRecord() {
       this.$router.push("recorder");
@@ -131,7 +112,8 @@ export default {
     toggleMenu() {
       $(".popout").toggle("slide");
       $("#overlay").fadeToggle();
-    }
+    },
+    scrollDir() {}
   }
 };
 </script>

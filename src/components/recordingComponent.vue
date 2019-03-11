@@ -9,7 +9,7 @@
         <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
         <ul>
           <li>
-            <a href="https://www.rit.edu/imagine/" target="_blank">About</a>
+            <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
           </li>
           <li @click="callWelcome()">How to</li>
           <li>
@@ -29,8 +29,12 @@
     </div>
     <div class="pin"></div>
     <div id="footer">
+      <div id="timer">
+        00:
+        <span class="time">00</span>
+      </div>
       <div id="recording">
-        <img src="../assets/pause.svg" id="pause" @click="pause()">
+        <div id="pauseBT" class="pauseBT" @click="pause()"></div>
         <img src="../assets/rec.svg" id="rec" class="Record rec" @click="record()">
         <img src="../assets/reset.svg" id="reset" @click="restart()">
       </div>
@@ -41,17 +45,43 @@
 
 <script>
 "use strict";
+let recorder;
 let myVar;
 let whatIsThis;
 let reset = false;
-let recorder;
+let counter = 0;
+let img = "../assets/playPause.svg";
+let img2 = "playPause.svg";
 
 export default {
   name: "Recording",
   props: {
     msg: String
   },
+  mounted() {
+    //Attach scripts to head for the recorderRTC API
+    let attachScript = document.createElement("script");
+    attachScript.setAttribute(
+      "src",
+      "https://cdn.webrtc-experiment.com/RecordRTC.js"
+    );
+    document.head.appendChild(attachScript);
+    let attachScript2 = document.createElement("script");
+    attachScript2.setAttribute(
+      "src",
+      "https://webrtc.github.io/adapter/adapter-latest.js"
+    );
+    document.head.appendChild(attachScript2);
 
+    counter = 0;
+
+    myVar = setInterval(() => {
+      whatIsThis.countdown();
+    }, 1000);
+
+    this.record();
+    whatIsThis = this;
+  },
   methods: {
     callUpload() {
       this.$router.push("upload");
@@ -88,7 +118,6 @@ export default {
       } catch (error) {
         alert(error);
         console.error("error" + error);
-        alert(error);
       }
     },
     captureMicrophone(callback) {
@@ -107,11 +136,13 @@ export default {
       $(".rec").removeClass("Recording");
       $(".rec").addClass("Record");
       let blob = recorder.getBlob();
-      console.log(blob);
       let audioURL = window.URL.createObjectURL(blob);
       window.audioURL = audioURL;
       window.blob = blob;
       recorder.microphone.stop();
+
+      //this.clearTime();
+
       if (reset === true) {
         reset = false;
         this.record();
@@ -119,72 +150,58 @@ export default {
         this.callUpload();
       }
     },
-    timer() {
-      this.record();
-      myVar = setInterval(() => {
-        this.record();
-        this.callUpload();
-      }, 10000);
-    },
+
+    // timer() {
+    //   this.record();
+    //   myVar = setInterval(() => {
+    //     this.record();
+    //     this.callUpload();
+    //   }, 10000);
+    // },
     toggleMenu() {
       $(".popout").toggle("slide");
       $("#overlay").fadeToggle();
     },
     pause() {
-      console.log("pause");
       if (recorder.state === "paused") {
         recorder.resumeRecording();
+        $("#pauseBT").css("src", "url(pause.svg)");
+        $(".recPlay").css("-webkit-animation-play-state", "running");
       } else {
         recorder.pauseRecording();
+        $("#pauseBT").css("src", "url(pausePlay.svg)");
+        $(".recPlay").css("-webkit-animation-play-state", "paused");
       }
     },
     restart() {
-      console.log("restart");
       if (reset === false) {
         reset = true;
         recorder.stopRecording();
         this.record();
+        counter = 0;
       }
+    },
+    countdown() {
+      if (recorder.state != "stopped") {
+        counter = counter + 1;
+        if (counter === 10) {
+          $(".time").html(counter);
+          counter = 0;
+          //stop recording and call the callback function!
+          recorder.stopRecording(this.stopRecordingCallback);
+        } else {
+          $(".time").html("0" + counter);
+        }
+      }
+    },
+    clearTime() {
+      //doesnt work
+      window.clearInvterval(this.myVar);
     }
-  },
-  mounted() {
-    //Attach scripts to head for the recorderRTC API
-    let attachScript = document.createElement("script");
-    attachScript.setAttribute(
-      "src",
-      "https://cdn.webrtc-experiment.com/RecordRTC.js"
-    );
-    document.head.appendChild(attachScript);
-    let attachScript2 = document.createElement("script");
-    attachScript2.setAttribute(
-      "src",
-      "https://webrtc.github.io/adapter/adapter-latest.js"
-    );
-    document.head.appendChild(attachScript2);
-
-    this.record();
-    whatIsThis = this;
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btn {
-  font-weight: bold;
-}
-.btn-primary {
-  margin-right: 10px;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 </style>
