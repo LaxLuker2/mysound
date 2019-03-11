@@ -2,7 +2,7 @@
   <div class="home">
     <div class="header"></div>
     <div v-if="mobile">
-      <div id="record">
+   <div id="record">
         <div id="outer"></div>
         <div id="middle"></div>
         <div id="center"></div>

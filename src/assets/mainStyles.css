@@ -3,15 +3,23 @@
 @media only screen and (max-width: 850px) {
     #app {
         overflow: hidden;
+        overflow-x: hidden !important;
         font-family: "Helvetica";
         font-size: 16px;
-        width: 100vw;
+        width: auto;
+        max-width: auto;
         height: 100vh;
         padding: 0;
         margin: 0;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        
+    }
+    #content{
+        background: #FFFFFF;
+        position: relative;
+        overflow-x: hidden;
     }
 
     h1 {
@@ -28,6 +36,7 @@
         align-content: center;
         justify-content: center;
         overflow: hidden;
+        overflow-x: hidden;
     }
 
     .recPlay {
@@ -44,6 +53,7 @@
         position: absolute;
         top: -40vw;
         z-index: -1;
+        overflow-x: hidden;
     }
 
     #record #middle {
@@ -189,18 +199,6 @@
         bottom: 10vh;
         position: absolute;
         width: 100vw;
-        align-content: center;
-        display: block;
-        justify-content: center;
-    }
-
-    #recording {
-        width: 60vw;
-        align-self: center;
-        margin: auto auto;
-        align-items: center;
-        justify-content: center;
-        display: flex;
     }
 
     #timer {
@@ -218,21 +216,32 @@
         justify-content: center;
         display: block;
     }
-
-    #rec {
-        width: 60px;
-        height: 60px;
-        margin: 4.1vw;
-        align-content: center;
+    #recording {
+        width: 40vw;
+        align-items: center;
+        justify-content: center;
+        margin: auto auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: flex;
     }
 
-    #pause {
-        width: 24px;
-        height: 30px;
-        right: 0;
+    #pauseBT {
+        width: 35px;
+        height: 33px;
+        background-image: url(pause.svg);
+        background-repeat: no-repeat;
+        background-position: cover;
+        background-size: 20px 24px;
+        padding-right: 20px;
+    }
+    #recBT {
+        width: 80px;
+        height: 80px;
+        margin-right: 0px;
     }
 
-    #reset {
+    #resBT {
         width: 33px;
         height: 30px;
     }
@@ -244,6 +253,7 @@
         justify-content: center;
         display: block;
         align-self: center;
+        
 
     }
 
@@ -544,6 +554,21 @@
         text-align: right;
         color: #828282;
     }
+    
+       .image {
+        margin-top: 12vh;
+        width: 100vw;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     .welcome {
         position: absolute;
@@ -575,21 +600,6 @@
         color: #4f4f4f;
         padding-bottom: 15px;
     }
-
-    .image {
-        margin-top: 50px;
-        width: 100vw;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-    }
-
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     #next {
         position: absolute;
         bottom: 55px;

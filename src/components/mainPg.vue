@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <img src="../assets/arrow.svg" id="arrow" @click="move()">
+        <!--<img src="../assets/arrow.svg" id="arrow" @click="move()">
         <div id="libray">
             <h2>Here is what the community sounds like!</h2>
             <div id="audio" class="audio">
@@ -70,7 +70,7 @@
                     <img src="../assets/play.svg" class="play" id="songEight">
                 </button>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -108,8 +108,11 @@
             toggleMenu() {
                 $(".popout").toggle("slide");
                 $("#overlay").fadeToggle();
+            },
+            scrollDir(){
+                
             }
-        }
+        },
     };
 
 </script>

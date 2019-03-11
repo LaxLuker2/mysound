@@ -22,16 +22,10 @@
                 <img id="logoC" src="../assets/logoC.svg">
             </div>
         </div>
-    <div id="record">
-      <div id="outer" class="recPlay"></div>
-      <div id="middle" class="recPlay"></div>
-      <div id="center" class="recPlay"></div>
-    </div>
-    <div class="pin"></div>
     <div id="footer">
-          <div id="timer">00:<span class="time">00</span></div>
+    <div id="timer">00:<span class="time">00</span></div>
       <div id="recording">
-        <img src="../assets/pause.svg" id="pause" @click="pause()">
+          <div id="pauseBT" class="pauseBT" @click="pause()"></div>
         <img src="../assets/rec.svg" id="rec" class="rec Record" @click="record()">
         <img src="../assets/reset.svg" id="reset" @click="restart()">
       </div>
@@ -50,6 +44,8 @@ let whatIsThis;
 var reset = false;
 var counter = 0;
 var record;
+var img = "../assets/playPause.svg";
+var img2 = "playPause.svg";
 
 export default {
   name: "Recording",
@@ -138,32 +134,41 @@ export default {
     pause() {
         if(mediaRecorder.state === 'paused'){
             mediaRecorder.resume();
-            $("#pause").att("src","../assets/pause.svg");
+            $("#pauseBT").css("src", "url(pause.svg)");
+            $(".recPlay").css("-webkit-animation-play-state", "running");
         }
         else{
             mediaRecorder.pause();
-            $("#pause").att("src","../assets/play.svg");
+            $("#pauseBT").css("src", "url(pausePlay.svg)");
+            $(".recPlay").css("-webkit-animation-play-state", "paused");
         }
     },
     restart() {
      if(reset === false){
          reset = true;
          mediaRecorder.stop();
+         counter = 0;
      }
     },
     countdown(){
-        counter++;
-        $(".time").html(""+counter);
+      if(mediaRecorder.state != 'paused'){
+            counter++;
         if(counter === 10){
+            $(".time").html(counter);
+            counter = 0;
             mediaRecorder.stop();
-        }     
-    }
+        }
+        else{
+             $(".time").html("0"+counter);
+        }
+      }
+    },
   },
   created() {
     //this.timer();
     //window.addEventListener("popstate", this.stop);
     myVar = setInterval(() => {
-      // whatIsThis.countdown(); 
+     whatIsThis.countdown(); 
     },1000);
     this.record();
     whatIsThis = this;
