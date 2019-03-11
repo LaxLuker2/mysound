@@ -41,9 +41,6 @@
 
 <script>
 "use strict";
-let mediaRecorder;
-let chunks = [];
-let blob;
 let myVar;
 let whatIsThis;
 let reset = false;
@@ -109,9 +106,9 @@ export default {
       //credit: https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html
       $(".rec").removeClass("Recording");
       $(".rec").addClass("Record");
-      var blob = recorder.getBlob();
+      let blob = recorder.getBlob();
       console.log(blob);
-      var audioURL = window.URL.createObjectURL(blob);
+      let audioURL = window.URL.createObjectURL(blob);
       window.audioURL = audioURL;
       window.blob = blob;
       recorder.microphone.stop();
@@ -133,24 +130,25 @@ export default {
       $(".popout").toggle("slide");
       $("#overlay").fadeToggle();
     },
-    stop() {
-      mediaRecorder.stop();
-    },
     pause() {
-      if (mediaRecorder.state === "paused") {
-        mediaRecorder.resume();
+      console.log("pause");
+      if (recorder.state === "paused") {
+        recorder.resumeRecording();
       } else {
-        mediaRecorder.pause();
+        recorder.pauseRecording();
       }
     },
     restart() {
+      console.log("restart");
       if (reset === false) {
         reset = true;
-        mediaRecorder.stop();
+        recorder.stopRecording();
+        this.record();
       }
     }
   },
   mounted() {
+    //Attach scripts to head for the recorderRTC API
     let attachScript = document.createElement("script");
     attachScript.setAttribute(
       "src",
