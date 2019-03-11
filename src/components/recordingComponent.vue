@@ -1,132 +1,170 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>Ask users to use mic, record voice, save voice.</p>
-    <button type="button" class="btn btn-primary rec Record" @click="record()">Record</button>
-    <a type="button" class="btn btn-warning downloadLink">Download</a>
+    <div class="menu">
+      <div id="overlay"></div>
+      <div class="hamburger" @click="toggleMenu()">
+        <img src="../assets/menuwhite.svg">
+      </div>
+      <div class="popout">
+        <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
+        <ul>
+          <li>
+            <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
+          </li>
+          <li @click="callWelcome()">How to</li>
+          <li>
+            <a href="https://www.rit.edu/imagine/" target="_blank">Imagine RIT</a>
+          </li>
+          <li>
+            <a href="mailto:chime.nmtp@gmail.com">Contact</a>
+          </li>
+        </ul>
+        <img id="logoC" src="../assets/logoC.svg">
+      </div>
+    </div>
+    <div id="record">
+      <div id="outer" class="recPlay"></div>
+      <div id="middle" class="recPlay"></div>
+      <div id="center" class="recPlay"></div>
+    </div>
+    <div class="pin"></div>
+    <div id="footer">
+      <div id="timer">
+        00:
+        <span class="time">00</span>
+      </div>
+      <div id="recording">
+        <div id="pauseBT" class="pauseBT" @click="pause()"></div>
+        <img src="../assets/rec.svg" id="rec" class="Record rec" @click="record()">
+        <img src="../assets/reset.svg" id="reset" @click="restart()">
+      </div>
+      <img src="../assets/recText.svg" id="recText">
+    </div>
   </div>
 </template>
 
 <script>
 "use strict";
-let mediaRecorder;
-let chunks = [];
-let blob;
-let constraints = { audio: true, video: false };
+let recorder;
+let stopTimer;
+let whatIsThis;
+let reset = false;
+let counter = 0;
+let img = "../assets/playPause.svg";
+let img2 = "playPause.svg";
 
 export default {
   name: "Recording",
   props: {
     msg: String
   },
+  mounted() {
+    stopTimer = setInterval(() => {
+      whatIsThis.countdown();
+    }, 1000);
+    this.record();
+    whatIsThis = this;
+  },
   methods: {
+    callUpload() {
+      this.$router.push("upload");
+    },
+    callRecord() {
+      this.$router.push("recorder");
+    },
     record() {
-      alert("rec btn pressed");
-      // if (
-      //   !navigator.mediaDevices.getUserMedia ||
-      //   navigator.mediaDevices.getUserMedia
-      // ) {
-      //   navigator.mediaDevices.getUserMedia =
-      //     navigator.mediaDevices.getUserMedia ||
-      //     navigator.mediaDevices.webkitGetUserMedia ||
-      //     navigator.mediaDevices.mozGetUserMedia ||
-      //     navigator.mediaDevices.msGetUserMedia;
-
-      //   alert("navigator.mediaDevices.getUserMedia");
-      //   alert(navigator.mediaDevices.getUserMedia);
-      // }
-
       try {
-        alert("in try");
-        // if (navigator.mediaDevices === undefined) {
-        //   navigator.mediaDevices = {};
-        //   alert("navigator.mediaDevices = undefined");
-        // }
+        if ($("#rec").hasClass("Record")) {
+          //CREDIT For audio recording
+          /* https://recordrtc.org/ https://www.npmjs.com/package/recordrtc */
+          /* https://github.com/muaz-khan/RecordRTC */
+          /* https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html */
 
-        // // Some browsers partially implement mediaDevices. We can't just assign an object
-        // // with getUserMedia as it would overwrite existing properties.
-        // // Here, we will just add the getUserMedia property if it's missing.
-        // if (navigator.mediaDevices.getUserMedia === undefined) {
-        //   alert("navigator.mediaDevices.getUserMedia = undefined");
-        //   navigator.mediaDevices.getUserMedia = function(constraints) {
-        //     // First get ahold of the legacy getUserMedia, if present
-        //     var getUserMedia =
-        //       navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+          this.captureMicrophone(function(microphone) {
+            recorder = RecordRTC(microphone, {
+              type: "audio",
+              recorderType: StereoAudioRecorder,
+              desiredSampRate: 16000
+            });
 
-        //     // Some browsers just don't implement it - return a rejected promise with an error
-        //     // to keep a consistent interface
-        //     // if (!getUserMedia) {
-        //     //   return Promise.reject(
-        //     //     alert("getUserMedia is not implemented in this browser")
-        //     //   );
-        //     // }
+            recorder.startRecording();
 
-        //     // // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-        //     // return new Promise(function(resolve, reject) {
-        //     //   getUserMedia.call(navigator, constraints, resolve, reject);
-        //     // });
-        //   };
-        // }
+            // release microphone on stopRecording
+            recorder.microphone = microphone;
 
-        alert("navigator");
-        alert(navigator);
-        alert("navigator.mediaDevices");
-        alert(navigator.mediaDevices);
-
-        navigator.mediaDevices
-          .getUserMedia({ audio: true, video: false })
-          .then(stream => {
-            if ($(".rec").hasClass("Record")) {
-              mediaRecorder = new MediaRecorder(stream);
-              mediaRecorder.start(250);
-              console.log(mediaRecorder.state);
-              console.log("recorder started");
-              alert("recorder started");
-              $(".rec").css("background-color", "red");
-              $(".rec").html("Recording");
-              $(".rec").addClass("Recording");
-              $(".rec").removeClass("Record");
-
-              chunks = [];
-
-              mediaRecorder.ondataavailable = function(e) {
-                //console.log('Data available...');
-                //console.log(e.data);
-                console.dir(e);
-
-                chunks.push(e.data);
-              };
-            } else {
-              mediaRecorder.stop();
-              console.log(mediaRecorder.state);
-              console.log("recorder stopped");
-              alert("recorder stopped");
-              $(".rec").css("background-color", "blue");
-              $(".rec").html("Record");
-              $(".rec").removeClass("Recording");
-              $(".rec").addClass("Record");
-            }
-            mediaRecorder.onstop = function(e) {
-              console.log("recorder stopped");
-
-              var blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-              chunks = [];
-              var audioURL = window.URL.createObjectURL(blob);
-              //audio.src = audioURL;
-
-              $(".downloadLink").attr("href", audioURL);
-
-              var rand = Math.floor(Math.random() * 10000000);
-              var name = "mysound_" + rand + ".mp3";
-              $(".downloadLink").attr("download", name);
-              $(".downloadLink").attr("name", name);
-            };
+            $(".rec").addClass("Recording");
+            $(".rec").removeClass("Record");
           });
-      } catch (err) {
-        alert("error");
-        alert(err);
-        alert(err.name);
-        alert(err.message);
+        } else {
+          recorder.stopRecording(this.stopRecordingCallback);
+        }
+      } catch (error) {
+        alert(error);
+        console.error("error" + error);
+      }
+    },
+    captureMicrophone(callback) {
+      //credit: https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then(callback)
+        .catch(function(error) {
+          alert("Unable to access your microphone.");
+          console.error(error);
+          alert(error);
+        });
+    },
+    stopRecordingCallback() {
+      //credit: https://github.com/muaz-khan/RecordRTC/blob/master/simple-demos/16khz-audio-recording.html
+      $(".rec").removeClass("Recording");
+      $(".rec").addClass("Record");
+      let blob = recorder.getBlob();
+      let audioURL = window.URL.createObjectURL(blob);
+      window.audioURL = audioURL;
+      window.blob = blob;
+      recorder.microphone.stop();
+      if (reset === true) {
+        reset = false;
+        this.record();
+      } else {
+        this.callUpload();
+      }
+    },
+    toggleMenu() {
+      $(".popout").toggle("slide");
+      $("#overlay").fadeToggle();
+    },
+    pause() {
+      if (recorder.state === "paused") {
+        recorder.resumeRecording();
+        $("#pauseBT").css("src", "url(pause.svg)");
+        $(".recPlay").css("-webkit-animation-play-state", "running");
+      } else {
+        recorder.pauseRecording();
+        $("#pauseBT").css("src", "url(pausePlay.svg)");
+        $(".recPlay").css("-webkit-animation-play-state", "paused");
+      }
+    },
+    restart() {
+      if (reset === false) {
+        reset = true;
+        recorder.stopRecording();
+        this.record();
+        counter = 0;
+      }
+    },
+    countdown() {
+      if (recorder.state != "stopped") {
+        counter = counter + 1;
+        if (counter === 10) {
+          clearInterval(stopTimer);
+          $(".time").html(counter);
+          counter = 0;
+          //stop recording and call the callback function!
+          recorder.stopRecording(this.stopRecordingCallback);
+        } else {
+          $(".time").html("0" + counter);
+        }
       }
     }
   }
@@ -135,21 +173,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btn {
-  font-weight: bold;
-}
-.btn-primary {
-  margin-right: 10px;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 </style>
