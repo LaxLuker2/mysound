@@ -59,7 +59,8 @@ export default {
     msg: String
   },
   mounted() {
-    stopTimer = setInterval(() => {
+    counter = 0;
+    window.stopTimer = setInterval(() => {
       whatIsThis.countdown();
     }, 1000);
     this.record();
@@ -136,31 +137,31 @@ export default {
     pause() {
       if (recorder.state === "paused") {
         recorder.resumeRecording();
-        $("#pauseBT").removeClass('pauseAnim');
-        $("#rec").addClass('recPulse');
+        $("#pauseBT").removeClass("pauseAnim");
+        $("#rec").addClass("recPulse");
         $(".recPlay").css("-webkit-animation-play-state", "running");
       } else {
         recorder.pauseRecording();
-        $("#rec").removeClass('recPulse');
-        $("#pauseBT").addClass('pauseAnim');
+        $("#rec").removeClass("recPulse");
+        $("#pauseBT").addClass("pauseAnim");
         $(".recPlay").css("-webkit-animation-play-state", "paused");
       }
     },
     restart() {
       if (reset === false) {
         reset = true;
-        $("#reset").addClass('resetSpin');
+        $("#reset").addClass("resetSpin");
         recorder.stopRecording();
         this.record();
         counter = 0;
       }
     },
     countdown() {
-      if (recorder.state != "stopped" && recorder.state != "paused" ) {
-          $("#reset").removeClass('resetSpin');
+      if (recorder.state != "stopped" && recorder.state != "paused") {
+        $("#reset").removeClass("resetSpin");
         counter = counter + 1;
         if (counter === 10) {
-          clearInterval(stopTimer);
+          clearInterval(window.stopTimer);
           $(".time").html(counter);
           counter = 0;
           //stop recording and call the callback function!

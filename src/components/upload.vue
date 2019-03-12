@@ -117,6 +117,8 @@ export default {
     audioURL = window.audioURL;
     whatIsThis = this;
     audioSound = new Audio(window.audioURL);
+
+    clearInterval(window.stopTimer);
   }
 };
 </script>
