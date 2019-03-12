@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import About from "./views/About.vue";
+import webHow from "@/components/webHow.vue"
+import webAbout from "@/components/webAbout.vue"
 import Recorder from "@/components/recordingComponent.vue";
 import Upload from "@/components/upload.vue";
 import WelcomeOne from "@/components/onboardOne.vue";
@@ -18,6 +21,11 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/",
+      name: "about",
+      component: About
     },
     {
       path: "/recorder",
@@ -54,6 +62,16 @@ export default new Router({
       path: "/conf",
       name: "conf",
       component: Conf
+    },
+    {
+      path: "/webhow",
+      name: "webHow",
+      component: webHow
+    },
+    {
+      path: "/webabout",
+      name: "webAbout",
+      component: webAbout
     }
   ]
 });

@@ -11,23 +11,23 @@
         <h1><img src="../assets/webPageImgs/mychime_logo.png" alt="MyChime" width="135" height="53"></h1>
         <h2><img src="../assets/webPageImgs/people.png" alt="people" width="500" height="222"></h2>
     </header>
-
     <p class="community">What does a community</p>
     <p class="sounds_like">sound like?</p>
-    <h4><img src="../assets/webPageImgs/pusher.png" alt="push"></h4>
-    <p class="description">Come see the experience take shape live at Imagine</p>
-    <p class="description">We plan to create an inspiring musical experience with the RIT community’s sound contributions to bring people together and spread joy.</p>
+    <h4><img src="../assets/webPageImgs/pusher_small.png" alt="push"></h4>
+    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+    <p class="description">eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+    <p class="description">enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <h4><img src="../assets/webPageImgs/pusher_small.png" alt="push"></h4>
     <section>
-        <p class="bar"></p>
+    <h5><img src="../assets/webPageImgs/bar.png" alt="people" width="1920" height="125"></h5>
+    <p class="use">Use your mobile device to record today!</p>
         <nav class="contentBreak">
-            <a href="index.html" id="current"></a>
-            <a href="how.html">How to?     </a>
-            <a href="about.html">About    </a>
+            <a href="webHow">How to?     </a>
+            <a href="webAbout">About    </a>
             <a href="https://www.rit.edu/imagine/">Imagine RIT</a>
         </nav>
-    </section>
     <h3><img src="../assets/webPageImgs/mobile_logo.png" alt="Mobile Logo" width="43" height="46"></h3>
-    <p class="use">Use your mobile device to record today!</p>
+    </section>
   </div>
 </template>
 
@@ -38,6 +38,10 @@ export default {
   name: "Recording",
   methods: {
   }
+
+
+
+
 };
 </script>
 
@@ -55,9 +59,17 @@ export default {
   to {
     opacity: 1; } }
 
+
+
 html{
     background-color: white;
     color: #0c1821;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100%;
     height: 100%;
 }
 
@@ -97,10 +109,10 @@ h2 {
 }
 
 h3 {
-    float: left;
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     left: 40px;
-    top: 880px;
+    top: 890px;
     -webkit-animation: fadein 2s;
     animation: fadein 2s; 
 }
@@ -113,6 +125,14 @@ h4 {
     letter-spacing: 3px;
     -webkit-animation: fadein 2s;
     animation: fadein 2s; 
+}
+
+h5 {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: #080808;
+    top: 850px;
 }
 
 .community {
@@ -161,11 +181,26 @@ h4 {
     animation: fadein 2s; 
 }
 
+.contributions {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 24px;
+    font-size: 17px;
+    text-align: center;
+    color: grey;
+    -webkit-animation: fadein 2s;
+    animation: fadein 2s; 
+}
+
 .use {
-    float: left;
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     left: 98px;
-    top: 890px;
+    top: 905px;
 
     color: #F2F2F2;
     font-family: 'Work Sans', sans-serif;
@@ -176,6 +211,10 @@ h4 {
     text-align: center;
     -webkit-animation: fadein 2s;
     animation: fadein 2s; 
+}
+
+.dots{
+ text-align: center;
 }
 
 #current{
@@ -224,18 +263,10 @@ a:active{
     color: #ba1a1a;
 }
 
-.bar {
-    position: fixed;
-    width: 1920px;
-    height: 125px;
-    bottom:-20px;
-    background-color: #080808;
-}
-
 .contentBreak {
-    position: absolute;
-    left: 1500px;
-    top: 870px;
+    position: fixed;
+    right: 40px;
+    top: 905px;
     font-family: 'Work Sans', sans-serif;
     font-style: normal;
     color: #0c1821;

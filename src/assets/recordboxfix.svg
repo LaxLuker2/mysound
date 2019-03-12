@@ -1,0 +1,85 @@
+<svg width="256" height="135" viewBox="0 0 256 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="256" height="135" rx="8" fill="url(#paint0_linear)"/>
+<g opacity="0.7">
+<g style="mix-blend-mode:screen">
+<rect x="12" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="22" y="42" width="5" height="50" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="32" y="52" width="5" height="30" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="42" y="27" width="5" height="80" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="52" y="37" width="5" height="60" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="62" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="72" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="82" y="42" width="5" height="50" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="92" y="52" width="5" height="30" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="102" y="27" width="5" height="80" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="112" y="37" width="5" height="60" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="122" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="130" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="140" y="42" width="5" height="50" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="150" y="52" width="5" height="30" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="160" y="27" width="5" height="80" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="170" y="37" width="5" height="60" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="180" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="188" y="32" width="5" height="70" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="198" y="42" width="5" height="50" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="208" y="52" width="5" height="30" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="218" y="27" width="5" height="80" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="228" y="37" width="5" height="60" fill="#828282"/>
+</g>
+<g style="mix-blend-mode:screen">
+<rect x="238" y="32" width="5" height="70" fill="#828282"/>
+</g>
+</g>
+<circle opacity="0.5" cx="128" cy="67" r="20" fill="#333333"/>
+<path d="M136 67.5L124.75 73.9952L124.75 61.0048L136 67.5Z" fill="#F2F2F2"/>
+<defs>
+<linearGradient id="paint0_linear" x1="128" y1="0" x2="128" y2="135" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F136EE"/>
+<stop offset="1" stop-color="#FB5154"/>
+</linearGradient>
+</defs>
+</svg>
