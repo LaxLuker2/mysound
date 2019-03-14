@@ -1,6 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700");
 
+@media only screen and (min-width: 850px) {
+  #web {
+    display: inline;
+  }
+  #web #nextArrowsDivWeb .nextArrow {
+    right: 20px;
+    position: absolute;
+  }
+
+  #web #nextArrowsDivWeb .bubbles {
+    -ms-flex-item-align: center;
+    align-self: center;
+    position: absolute;
+    left: 47.5vw;
+  }
+
+  #mobile {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 850px) {
+  #web {
+    display: none;
+  }
+  #mobile {
+    display: inline;
+  }
   #app {
     overflow: hidden;
     overflow-x: hidden !important;
@@ -529,8 +556,7 @@
 
   .logoH {
     align-self: center;
-    position: absolute;
-    left: 42vw;
+    display: flex;
     z-index: 1;
   }
 
@@ -561,7 +587,7 @@
   }
 
   .welcome {
-    position: absolute;
+    /* position: absolute; */
     align-content: center;
     justify-content: center;
     margin: 33px 30px auto 30px;

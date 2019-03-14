@@ -10,6 +10,7 @@
 
 <style>
 @import "./assets/mainStyles.css";
+@import "./assets/webStyles.css";
 </style>
 
 

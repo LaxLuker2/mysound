@@ -11,7 +11,7 @@
       <MobileHome/>
     </div>
     <div v-else>
-      <WebHome/>
+      <onboard/>
     </div>
   </div>
 </template>
@@ -19,13 +19,13 @@
 "use strict";
 // @ is an alias to /src
 import MobileHome from "@/components/mobileHome.vue";
-import WebHome from "@/components/webHome.vue";
+import onboard from "@/components/onboardOne.vue";
 
 export default {
   name: "home",
   components: {
     MobileHome,
-    WebHome
+    onboard
   },
   data() {
     return {
