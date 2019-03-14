@@ -8,7 +8,7 @@
         <div id="center"></div>
       </div>
       <div class="logo"></div>
-      <MainPG/>
+      <MobileHome/>
     </div>
     <div v-else>
       <AboutPage/>
@@ -18,14 +18,13 @@
 <script>
 "use strict";
 // @ is an alias to /src
-import Recording from "@/components/recordingComponent.vue";
-import MainPG from "@/components/mainPg.vue";
+import MobileHome from "@/components/mobileHome.vue";
 import AboutPage from "@/components/webAbout.vue";
 
 export default {
   name: "home",
   components: {
-    MainPG,
+    MobileHome,
     AboutPage
   },
   data() {

@@ -3,7 +3,6 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
 import webHowTo from "@/views/HowTo.vue";
-// import webAbout from "@/components/webAbout.vue";
 import Recorder from "@/components/recordingComponent.vue";
 import Upload from "@/components/upload.vue";
 import WelcomeOne from "@/components/onboardOne.vue";
@@ -21,15 +20,19 @@ export default new Router({
       component: Home
     },
     {
+      path: "/about",
+      name: "about",
+      component: About
+    },
+    {
+      path: "/howto",
+      name: "howto",
+      component: webHowTo
+    },
+    {
       path: "/recorder",
       name: "recorder",
       component: Recorder
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      // component: function() {
-      //   return import(/* webpackChunkName: "about" */ "./views/About.vue");
-      // }
     },
     {
       path: "/upload",
@@ -55,16 +58,6 @@ export default new Router({
       path: "/conf",
       name: "conf",
       component: Conf
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: About
-    },
-    {
-      path: "/howto",
-      name: "howto",
-      component: webHowTo
     }
   ]
 });

@@ -89,7 +89,7 @@
 "use strict";
 import jump from "jump.js";
 export default {
-  name: "mainPg",
+  name: "mobileHome",
   props: {
     msg: String
   },

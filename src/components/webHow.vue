@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: "Recording",
+  name: "webHow",
   methods: {
     aboutPageClick(){
     this.$router.push("/about");

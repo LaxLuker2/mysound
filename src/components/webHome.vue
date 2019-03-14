@@ -48,7 +48,7 @@
 "use strict";
 
 export default {
-  name: "webPage",
+  name: "webHome",
   methods: {
     aboutPageClick() {
       this.$router.push("/about");

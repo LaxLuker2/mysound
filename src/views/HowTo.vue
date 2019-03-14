@@ -18,14 +18,13 @@
 <script>
 "use strict";
 // @ is an alias to /src
-import Recording from "@/components/recordingComponent.vue";
-import MainPG from "@/components/mainPg.vue";
+import MobileHome from "@/components/mobileHome.vue";
 import WebHowTo from "@/components/webHow.vue";
 
 export default {
   name: "home",
   components: {
-    MainPG,
+    MobileHome,
     WebHowTo
   },
   data() {

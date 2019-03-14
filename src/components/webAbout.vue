@@ -48,7 +48,7 @@
 "use strict";
 
 export default {
-  name: "Recording",
+  name: "webAbout",
   methods: {
     aboutPageClick(){
         this.$router.push("/about");

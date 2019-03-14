@@ -2,31 +2,30 @@
   <div class="home">
     <div class="header"></div>
     <div v-if="mobile">
-   <div id="record">
+      <div id="record">
         <div id="outer"></div>
         <div id="middle"></div>
         <div id="center"></div>
       </div>
       <div class="logo"></div>
-      <MainPG/>
+      <MobileHome/>
     </div>
     <div v-else>
-      <WebPage/>
+      <WebHome/>
     </div>
   </div>
 </template>
 <script>
 "use strict";
 // @ is an alias to /src
-import Recording from "@/components/recordingComponent.vue";
-import MainPG from "@/components/mainPg.vue";
-import WebPage from "@/components/webPage";
+import MobileHome from "@/components/mobileHome.vue";
+import WebHome from "@/components/webHome.vue";
 
 export default {
   name: "home",
   components: {
-    MainPG,
-    WebPage
+    MobileHome,
+    WebHome
   },
   data() {
     return {
