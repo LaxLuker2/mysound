@@ -1,12 +1,9 @@
-<template>
+<!--<template>
   <div class="webPage">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="../assets/webPageImgs/icon.png">
-    <!-- Add custom fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">-->
     <header>
       <h1>
         <img src="../assets/webPageImgs/mychime_logo.png" alt="MyChime" width="135" height="53">
@@ -42,6 +39,24 @@
       </h3>
     </section>
   </div>
+</template>-->
+<template>
+    <div class="webPage fade">
+        <header id="webHeader"><img src="../assets/logoC.svg" alt="MyChime" @click="homeTo()"></header>
+        <div id="webContent">
+            <img src="../assets/welcome1.svg" alt="MyChime" id="webImg">
+            <h1 id="webTitle">What does a community sound like?</h1>
+            <p id="webDes">Chime aims to illustrate what a community sounds like, when it comes together, with a little help from you.</p>
+        </div>
+        <div id="webNav">
+            <img src="../assets/webNavPhone.svg" alt="Mobile Logo">
+            <nav class="contentBreak">
+                <a href="webHow" @click="howToPageClick()">How to?</a>
+                <a href="webAbout" @click="aboutPageClick()">About</a>
+                <a href="https://www.rit.edu/imagine/">Imagine RIT</a>
+            </nav>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -65,8 +80,166 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    
+     /* -- Edited CSS Content -- */
+    .webPage {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    header {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin: 30px 0 0 0;
+    }
+
+    header img {
+        width: 90px;
+        height: 35px;
+    }
+
+    #webContent {
+        display: block;
+        align-content: center;
+        justify-content: center;
+        width: 50vw;
+        margin: auto;
+        padding-bottom: 16vh;
+    }
+
+    #webContent img {
+        width: 30vw;
+        height: auto;
+        min-width: 346px;
+        min-height: 155px;
+        display: block;
+        margin: 20vh auto 0 auto;
+    }
+
+
+    h1 {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 40px;
+        letter-spacing: -0.25px;
+
+        color: #000000;
+        width: 45vw;
+        text-align: center;
+        margin: 35px auto 35px auto;
+    }
+
+    p {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 45vw;
+        text-align: center;
+        margin: auto;
+        color: #000000;
+    }
+
+    #webNav {
+        width: 100vw;
+        height: 90px;
+        background: #080808;
+        bottom: 0px;
+        left: 0px;
+        position: fixed;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #webNav img {
+        width: 40vw;
+        height: auto;
+        max-width: 414px;
+        max-height: 40px;
+        margin: 30px auto auto 30px;
+        float: left
+    }
+
+    nav {
+        right: 0px;
+        margin: 39px 22px 0 0;
+        float: right;
+    }
+
+    nav a {
+        font-family: Work Sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: right;
+
+        color: #F2F2F2;
+        padding: 20px;
+    }
+    
+    nav a:hover{
+        text-decoration: none;
+        color: #0c1821;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+    } 
+
+    /* animation */
+
+    .fade {
+        -webkit-animation: fadein  2s forwards;
+        -moz-animation: fadein 2s forwards;
+        animation: fadein 2s forwards;
+
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes glow {
+        from {
+            text-shadow: 0 0 18px #fff, 0 0 17px #fff, 0 0 18px #fff, 0 0 19px #fff,
+                0 0 20px #fff, 0 0 21px #fff, 0 0 22px #fff;
+        }
+
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 17px #fff, 0 0 18px #fff, 0 0 19px #fff,
+                0 0 20px #fff, 0 0 21px #fff, 0 0 22px #fff;
+        }
+    }
+    
 /* -- Content -- */
-@keyframes fadein {
+/*@keyframes fadein {
   from {
     opacity: 0;
   }
@@ -305,5 +478,5 @@ a:active {
 
   header h1 {
   }
-}
+}*/
 </style>
