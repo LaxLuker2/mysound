@@ -11,7 +11,7 @@
       <MainPG/>
     </div>
     <div v-else>
-      <AboutPage/>
+      <WebHowTo/>
     </div>
   </div>
 </template>
@@ -20,13 +20,13 @@
 // @ is an alias to /src
 import Recording from "@/components/recordingComponent.vue";
 import MainPG from "@/components/mainPg.vue";
-import AboutPage from "@/components/webAbout.vue";
+import WebHowTo from "@/components/webHow.vue";
 
 export default {
   name: "home",
   components: {
     MainPG,
-    AboutPage
+    WebHowTo
   },
   data() {
     return {

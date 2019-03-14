@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import About from "./views/About.vue";
+import webHowTo from "@/views/HowTo.vue";
+// import webAbout from "@/components/webAbout.vue";
 import Recorder from "@/components/recordingComponent.vue";
 import Upload from "@/components/upload.vue";
 import WelcomeOne from "@/components/onboardOne.vue";
@@ -29,22 +32,22 @@ export default new Router({
       // }
     },
     {
-     path: "/upload",
+      path: "/upload",
       name: "upload",
-      component: Upload 
+      component: Upload
     },
     {
-     path: "/Welcome=1",
+      path: "/Welcome=1",
       name: "welcome=1",
       component: WelcomeOne
     },
     {
-     path: "/Welcome=2",
+      path: "/Welcome=2",
       name: "welcome=2",
       component: WelcomeTwo
     },
     {
-     path: "/Welcome=3",
+      path: "/Welcome=3",
       name: "welcome=3",
       component: WelcomeThree
     },
@@ -52,6 +55,16 @@ export default new Router({
       path: "/conf",
       name: "conf",
       component: Conf
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About
+    },
+    {
+      path: "/howto",
+      name: "howto",
+      component: webHowTo
     }
   ]
 });
