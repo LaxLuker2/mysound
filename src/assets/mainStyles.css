@@ -51,6 +51,7 @@
   h1 {
     font-size: 48px;
     color: #f2f2f2;
+    width: auto;
   }
 
   #nav {
@@ -250,10 +251,10 @@
     margin-bottom: 15px;
     display: flex;
   }
-    #recording img{
-        margin-left: 8px;
-       margin-right: 8px;
-    }
+  #recording img {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
 
   #pauseBT {
     width: 33px;
@@ -420,34 +421,37 @@
   }
 
   .goodjob {
+    /* align-content: center;
+    justify-content: center;
+    margin-left: 14vw; */
     align-content: center;
     justify-content: center;
-    margin-left: 14vw;
+    margin: 33px 30px auto 30px;
+    padding-bottom: 15px;
   }
 
   .goodjob h1 {
     font-family: Work Sans;
     font-style: normal;
     font-weight: bold;
-    line-height: 22px;
+    line-height: 30px;
     font-size: 32px;
     text-align: center;
+    letter-spacing: -0.25px;
+
     color: #333333;
-    width: 72vw;
-    margin-top: 20px;
+    width: auto;
   }
 
   .goodjob p {
-    position: relative;
-    width: 72vw;
     font-family: Work Sans;
     font-style: normal;
     font-weight: normal;
     line-height: 25px;
     font-size: 16px;
     text-align: center;
-
     color: #4f4f4f;
+    width: auto;
   }
 
   .restartButton {
@@ -500,6 +504,13 @@
     outline: none;
   }
 
+  .thankyou {
+    align-content: center;
+    justify-content: center;
+    margin: 33px 30px auto 30px;
+    padding-bottom: 15px;
+  }
+
   .thankyou h1 {
     font-family: Work Sans;
     font-style: normal;
@@ -510,6 +521,7 @@
     letter-spacing: -0.25px;
 
     color: #333333;
+    width: auto;
   }
 
   .thankyou p {
@@ -519,8 +531,8 @@
     line-height: 25px;
     font-size: 16px;
     text-align: center;
-
     color: #4f4f4f;
+    width: auto;
   }
 
   .retryButton {
@@ -564,11 +576,11 @@
     z-index: 1;
   }
 
-    .logoH img{
-        display: block;
+  .logoH img {
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    }
+  }
 
   #skip {
     right: 20px;
