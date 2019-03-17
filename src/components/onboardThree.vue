@@ -4,7 +4,7 @@
       <div class="menu">
         <div id="overlay"></div>
         <div class="hamburger" @click="toggleMenu()">
-          <img src="../assets/menuwhite.svg">
+          <img src="../assets/menu.svg">
         </div>
         <div class="popout">
           <img id="exit" @click="toggleMenu()" src="../assets/close.svg">
