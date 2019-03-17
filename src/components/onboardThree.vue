@@ -27,7 +27,7 @@
         <div class="logoH">
           <img src="../assets/logoB.svg">
         </div>
-        <a id="skip" @click="callHome">Skip</a>
+          <a id="skip" @click="callHome">Skip</a>
       </div>
       <div class="image">
         <img src="../assets/welcome3.svg">
