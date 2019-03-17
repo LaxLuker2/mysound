@@ -43,7 +43,7 @@
     box-sizing: border-box;
   }
   #content {
-    background: #ffffff;
+    /* background: #ffffff; */
     position: relative;
     overflow-x: hidden;
   }
@@ -441,6 +441,7 @@
 
     color: #333333;
     width: auto;
+    margin-bottom: 20px;
   }
 
   .goodjob p {
@@ -522,7 +523,7 @@
 
     color: #333333;
     width: auto;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .thankyou p {
