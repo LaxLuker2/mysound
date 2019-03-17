@@ -107,7 +107,7 @@ export default {
 
 
 <style scoped>
-@media only screen and (min-height: 720px) {
+@media only screen and (min-height: 785px) {
   #nextArrowsDivWeb {
     position: absolute;
     bottom: 90px;
