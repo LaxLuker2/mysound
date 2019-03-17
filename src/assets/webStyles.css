@@ -26,7 +26,7 @@ header img {
   justify-content: center;
   width: 50vw;
   margin: auto;
-  padding-bottom: 10vh;
+  /* padding-bottom: 10vh; */
 }
 
 #webContent #webImg1 {
@@ -76,7 +76,7 @@ h1 {
   margin: 35px auto 35px auto;
 }
 
-p {
+p#webDes {
   font-family: Work Sans;
   font-style: normal;
   font-weight: normal;
@@ -94,7 +94,6 @@ p {
   background: #080808;
   bottom: 0px;
   left: 0px;
-  position: fixed;
   align-content: center;
   justify-content: center;
 }
@@ -136,11 +135,23 @@ nav a:hover {
 }
 
 #nextArrowsDivWeb {
-  position: absolute;
-  bottom: 160px;
+  /* position: absolute; */
+  /* bottom: 16vh; */
   width: 100vw;
-  display: flex;
+  /* display: flex; */
+  margin-bottom: 40px;
+  margin-top: 15px;
 }
+
+/* @media only screen and (min-height: 720px) {
+  #nextArrowsDivWeb {
+    position: absolute;
+    bottom: 12vh;
+  }
+  #webNav {
+    position: fixed;
+  }
+} */
 
 /* animation */
 

@@ -61,7 +61,7 @@
           <img src="../assets/webNavPhone.svg" alt="Mobile Logo">
           <nav class="contentBreak">
             <a @click="callOnboarding2()">How to?</a>
-            <a @click="callOnboarding3()">About</a>
+            <a href="https://designed.cad.rit.edu/nmcapstone/pro/chime" target="_blank">About</a>
             <a href="https://www.rit.edu/imagine/">Imagine RIT</a>
           </nav>
         </div>
@@ -89,9 +89,6 @@ export default {
     callOnboarding2() {
       this.$router.push("welcome=2");
     },
-    callOnboarding3() {
-      this.$router.push("welcome=3");
-    },
     toggleMenu() {
       $(".popout").toggle("slide");
       $("#overlay").fadeToggle();
@@ -101,4 +98,14 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (min-height: 765px) {
+  #nextArrowsDivWeb {
+    position: absolute;
+    bottom: 90px;
+    margin-bottom: 30px;
+  }
+  #webNav {
+    position: fixed;
+  }
+}
 </style>

@@ -603,6 +603,7 @@
     letter-spacing: -0.25px;
 
     color: #333333;
+    width: auto;
   }
 
   .welcome p {
@@ -615,6 +616,7 @@
 
     color: #4f4f4f;
     padding-bottom: 15px;
+    width: auto;
   }
   #nextBtnDiv {
     position: absolute;
