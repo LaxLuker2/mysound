@@ -73,6 +73,9 @@ export default {
     callRecord() {
       this.$router.push("recorder");
     },
+    callHome() {
+      this.$router.push("/");
+    },
     record() {
       try {
         if ($("#rec").hasClass("Record")) {
@@ -99,8 +102,9 @@ export default {
           recorder.stopRecording(this.stopRecordingCallback);
         }
       } catch (error) {
-        alert(error);
-        console.error("error" + error);
+        alert("We Are Sorry An Error Occured");
+        //console.error("error" + error);
+        whatIsThis.callHome();
       }
     },
     captureMicrophone(callback) {
@@ -109,9 +113,12 @@ export default {
         .getUserMedia({ audio: true })
         .then(callback)
         .catch(function(error) {
-          alert("Unable to access your microphone.");
-          console.error(error);
-          alert(error);
+          alert(
+            "Chime is unable to access your microphone. Please clear your safari settings and try again."
+          );
+          //console.error(error);
+          //alert(error);
+          whatIsThis.callHome();
         });
     },
     stopRecordingCallback() {
