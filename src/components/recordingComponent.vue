@@ -45,7 +45,7 @@
 
 <script>
 "use strict";
-let recorder;
+let recorder = RecordRTC;
 let stopTimer;
 let whatIsThis;
 let reset = false;
@@ -60,11 +60,11 @@ export default {
   },
   mounted() {
     counter = 0;
+    whatIsThis = this;
     window.stopTimer = setInterval(() => {
       whatIsThis.countdown();
     }, 1000);
     this.record();
-    whatIsThis = this;
   },
   methods: {
     callUpload() {
@@ -103,7 +103,7 @@ export default {
         }
       } catch (error) {
         alert("We Are Sorry An Error Occured");
-        //console.error("error" + error);
+        console.log("error" + error);
         whatIsThis.callHome();
       }
     },
@@ -114,9 +114,9 @@ export default {
         .then(callback)
         .catch(function(error) {
           alert(
-            "Chime is unable to access your microphone. Please clear your safari settings and try again."
+            "Chime is unable to access your microphone. Please refresh the page or clear your browser settings or try a different browser."
           );
-          //console.error(error);
+          console.log(error);
           //alert(error);
           whatIsThis.callHome();
         });

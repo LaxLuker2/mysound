@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     callMain() {
-      this.$router.push("recorder");
+      this.$router.push("/");
     },
     callWelcome() {
       this.$router.push("welcome=1");

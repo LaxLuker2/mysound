@@ -41,7 +41,7 @@
       </div>-->
       <div id="recorder">
         <div id="uploadUI">
-          <input type="button" id="resButton" value="Retry" @click="callHome()">
+          <input type="button" id="resButton" value="Retry" @click="callRecord()">
           <form @submit.prevent="handleSubmit" action method="post" enctype="multipart/form-data">
             <input type="submit" value="Upload" class="recButton submit">
           </form>
